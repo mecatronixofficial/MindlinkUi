@@ -1,0 +1,283 @@
+/* app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --red: #d42b2b;
+    --dark-red: #a81f1f;
+    --light-red: #fdf0f0;
+    --red2: #f5e0e0;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    color: #111;
+    background: #fff;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+
+  /* Hero dot pattern */
+  .hero-dots {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(#ffffff15 1px, transparent 1px);
+    background-size: 30px 30px;
+    pointer-events: none;
+  }
+
+  /* Gallery backgrounds */
+  .g1 {
+    background: linear-gradient(135deg, #fdf0f0, #fad0d0);
+  }
+
+  .g2 {
+    background: linear-gradient(135deg, #fff0f0, #ffe0e0);
+  }
+
+  .g3 {
+    background: linear-gradient(135deg, #fde8e8, #f5c8c8);
+  }
+
+  .g4 {
+    background: linear-gradient(135deg, #fdf5f5, #fae0e0);
+  }
+
+  .g5 {
+    background: linear-gradient(135deg, #fff0f0, #fdd8d8);
+  }
+
+  .g6 {
+    background: linear-gradient(135deg, #fdeaea, #f5d0d0);
+  }
+}
+
+@layer utilities {
+
+  /* Reveal animation */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: all 0.6s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Custom animations */
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes spin-slower-reverse {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(-360deg);
+    }
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0px) translateX(0px);
+      opacity: 0;
+    }
+
+    50% {
+      transform: translateY(-20px) translateX(10px);
+      opacity: 0.5;
+    }
+  }
+
+  .animate-float {
+    animation: float linear infinite;
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-right {
+    from {
+      opacity: 0;
+      transform: translateX(40px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(40px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Animation utility classes */
+  .animate-spin-slow {
+    animation: spin-slow 30s linear infinite;
+  }
+
+  .animate-spin-slower-reverse {
+    animation: spin-slower-reverse 20s linear infinite;
+  }
+
+  .animate-marquee {
+    animation: marquee 25s linear infinite;
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.8s ease both;
+  }
+
+  .animate-fade-right {
+    animation: fade-right 0.9s ease 0.2s both;
+  }
+
+  .animate-fadeInDown {
+    animation: fadeInDown 0.8s ease forwards;
+  }
+
+  .animate-fadeInUp {
+    animation: fadeInUp 0.8s ease 0.2s both;
+  }
+
+  .animate-fadeInUp2 {
+    animation: fadeInUp 0.8s ease 0.4s both;
+  }
+
+  .animate-fadeInRight {
+    animation: fadeInRight 0.8s ease 0.3s both;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fdf0f0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d42b2b;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a81f1f;
+}
+
+/* Add to your globals.css */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Optional: Add staggered delays for children */
+.reveal:nth-child(1) {
+  transition-delay: 0s;
+}
+
+.reveal:nth-child(2) {
+  transition-delay: 0.1s;
+}
+
+.reveal:nth-child(3) {
+  transition-delay: 0.2s;
+}
+
+.reveal:nth-child(4) {
+  transition-delay: 0.3s;
+}
+
+.reveal:nth-child(5) {
+  transition-delay: 0.4s;
+}
+
+.reveal:nth-child(6) {
+  transition-delay: 0.5s;
+}
