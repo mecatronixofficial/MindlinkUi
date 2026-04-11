@@ -1,16 +1,18 @@
+// components/Course/Courses.tsx
 "use client";
 
 import Image from "next/image";
 import { courseList } from "@/helper/data_helper";
 import Icon_Helper from "@/helper/icon_helper";
-import { CourseSlug } from "@/helper/types";
+import { CourseSlug, PageType } from "@/helper/types";
 import { useState } from "react";
 
 type Props = {
+  onNavigate: (page: PageType) => void;  // Add this prop
   onCourseDetail: (slug: CourseSlug) => void;
 };
 
-const CoursesGrid = ({ onCourseDetail }: Props) => {
+const CoursesGrid = ({ onNavigate, onCourseDetail }: Props) => {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
 
   return (
@@ -106,7 +108,10 @@ const CoursesGrid = ({ onCourseDetail }: Props) => {
                   View Details
                 </button>
 
-                <button className="flex-1 bg-red-600 text-white px-4 py-2 rounded-xl text-sm font-bold hover:bg-red-700 transition-all duration-300 hover:shadow-lg transform hover:scale-105">
+                <button 
+                  onClick={() => onNavigate("contact")}
+                  className="flex-1 bg-red-600 text-white px-4 py-2 rounded-xl text-sm font-bold hover:bg-red-700 transition-all duration-300 hover:shadow-lg transform hover:scale-105"
+                >
                   Enroll Now
                 </button>
               </div>
@@ -125,6 +130,19 @@ const CoursesGrid = ({ onCourseDetail }: Props) => {
             <div className="absolute bottom-0 right-0 w-16 h-16 bg-gradient-to-tl from-red-100 to-transparent rounded-tl-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           </div>
         ))}
+      </div>
+
+      {/* View All CTA */}
+      <div className="text-center mt-12">
+        <button 
+          onClick={() => onNavigate("contact")}
+          className="inline-flex items-center gap-2 px-8 py-3 bg-transparent border-2 border-red-600 text-red-600 font-bold rounded-full hover:bg-red-600 hover:text-white transition-all duration-300 hover:shadow-lg"
+        >
+          <span>Talk to Advisor</span>
+          <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </button>
       </div>
     </div>
   );

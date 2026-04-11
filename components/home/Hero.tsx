@@ -13,10 +13,10 @@ type PageType =
   | "contact";
 
 interface HeroProps {
-  onPageChange: (page: PageType) => void;
+  onNavigate: (page: PageType) => void;  // Changed from onPageChange to onNavigate
 }
 
-export default function Hero({ onPageChange }: HeroProps) {
+export default function Hero({ onNavigate }: HeroProps) {  // Changed from onPageChange to onNavigate
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [typedText, setTypedText] = useState("");
   const fullText = "Transform Your Future Today";
@@ -146,7 +146,7 @@ export default function Hero({ onPageChange }: HeroProps) {
             </div>
 
             <p className="text-white/80 text-base sm:text-lg leading-relaxed max-w-lg">
-              EMPZON is a premier institute offering transformative courses in
+              MindLink is a premier institute offering transformative courses in
               HR & AI, Life Coaching, Women's Safety, Business Growth, Feedback
               Counselling, and Family Counselling — because every person
               deserves to thrive.
@@ -155,7 +155,7 @@ export default function Hero({ onPageChange }: HeroProps) {
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4 pt-4">
               <button
-                onClick={() => onPageChange("courses")}
+                onClick={() => onNavigate("courses")}  // Changed from onPageChange to onNavigate
                 className="group relative px-8 py-3 rounded-xl font-bold uppercase tracking-wider text-sm overflow-hidden transition-all duration-300 hover:scale-105"
               >
                 <span className="absolute inset-0 bg-white"></span>
@@ -169,7 +169,7 @@ export default function Hero({ onPageChange }: HeroProps) {
               </button>
               
               <button
-                onClick={() => onPageChange("contact")}
+                onClick={() => onNavigate("contact")}  // Changed from onPageChange to onNavigate
                 className="px-8 py-3 rounded-xl font-semibold uppercase tracking-wider text-sm border-2 border-white/40 text-white hover:bg-white/20 hover:border-white transition-all duration-300"
               >
                 Get in Touch

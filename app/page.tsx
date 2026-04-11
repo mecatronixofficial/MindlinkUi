@@ -19,61 +19,69 @@ import CourseDetailPage from "@/components/Course/CourseDetail";
 import { CourseSlug, PageType } from "@/helper/types";
 import CoursesGrid from "@/components/Course/Courses";
 
-// ✅ Loading Spinner
+// Loading Spinner Component
 function LoadingSpinner() {
   return (
-    <div className="flex justify-center items-center min-h-screen">
-      <div className="w-12 h-12 border-4 border-[#d42b2b] border-t-transparent rounded-full animate-spin"></div>
+    <div className="fixed inset-0 flex justify-center items-center bg-white/80 backdrop-blur-sm z-50">
+      <div className="flex flex-col items-center gap-3">
+        <div className="w-12 h-12 border-4 border-[#d42b2b] border-t-transparent rounded-full animate-spin"></div>
+        <p className="text-[#d42b2b] text-sm font-semibold animate-pulse">Loading...</p>
+      </div>
     </div>
   );
 }
 
 function PageContent() {
   const { activePage, navigateTo } = useNavigation();
-
   const [isLoading, setIsLoading] = useState(false);
-  const [currentCourseDetail, setCurrentCourseDetail] =
-    useState<CourseSlug | null>(null);
+  const [currentCourseDetail, setCurrentCourseDetail] = useState<CourseSlug | null>(null);
 
-  // ✅ Navigation with loader
+  // Navigation with loader
   const handleNavigateWithLoading = async (page: PageType) => {
+    if (activePage === page && !currentCourseDetail) return; // Prevent unnecessary navigation
+    
     setIsLoading(true);
     setCurrentCourseDetail(null);
-
+    
+    // Small delay for smooth transition
+    await new Promise((resolve) => setTimeout(resolve, 50));
     navigateTo(page);
-
     await new Promise((resolve) => setTimeout(resolve, 100));
     setIsLoading(false);
   };
 
+  // Handle course detail view
   const handleCourseDetail = (slug: CourseSlug) => {
     setCurrentCourseDetail(slug);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  // Handle back to courses list
   const handleBackToCourses = () => {
     setCurrentCourseDetail(null);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  // Handle enroll from course detail
   const handleEnroll = () => {
     setCurrentCourseDetail(null);
     navigateTo("contact");
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // ✅ Fix active nav state
+  // Active state for navigation
   const activeForNav = currentCourseDetail ? "courses" : activePage;
 
-  // ✅ Reveal animation reset
+  // Reveal animation effect
   useEffect(() => {
     if (!currentCourseDetail) {
       const timeout = setTimeout(() => {
-        const reveals =
-          document.querySelectorAll<HTMLElement>(".reveal");
-
+        const reveals = document.querySelectorAll<HTMLElement>(".reveal");
+        
+        // Remove existing visible class
         reveals.forEach((el) => el.classList.remove("visible"));
-
+        
+        // Create new observer
         const observer = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
@@ -82,36 +90,35 @@ function PageContent() {
               }
             });
           },
-          { threshold: 0.08 }
+          { threshold: 0.08, rootMargin: "0px 0px -50px 0px" }
         );
-
+        
         reveals.forEach((el) => observer.observe(el));
-
+        
         return () => observer.disconnect();
-      }, 60);
-
+      }, 100);
+      
       return () => clearTimeout(timeout);
     }
   }, [activePage, currentCourseDetail]);
 
+  // Show loading spinner
   if (isLoading) return <LoadingSpinner />;
 
-  // ✅ Course Detail Page
+  // Course Detail Page View
   if (currentCourseDetail) {
     return (
       <>
         <Nav
           activePage={activeForNav}
-          onNavigate={handleNavigateWithLoading}  // ✅ FIXED
+          onNavigate={handleNavigateWithLoading}
           onCourseDetail={handleCourseDetail}
         />
-
         <CourseDetailPage
           slug={currentCourseDetail}
           onBack={handleBackToCourses}
           onEnroll={handleEnroll}
         />
-
         <Footer
           onNavigate={handleNavigateWithLoading}
           onCourseDetail={handleCourseDetail}
@@ -120,16 +127,16 @@ function PageContent() {
     );
   }
 
-  // ✅ Normal Pages
+  // Normal Pages View
   return (
     <>
       <Nav
         activePage={activePage}
-        onNavigate={handleNavigateWithLoading}  // ✅ FIXED
+        onNavigate={handleNavigateWithLoading}
         onCourseDetail={handleCourseDetail}
       />
 
-      <main>
+      <main className="min-h-screen">
         {activePage === "home" && (
           <>
             <Hero onNavigate={handleNavigateWithLoading} />
@@ -159,7 +166,7 @@ function PageContent() {
   );
 }
 
-// ✅ Root Wrapper
+// Root Wrapper with Navigation Provider
 export default function RootPage() {
   return (
     <NavigationProvider>
