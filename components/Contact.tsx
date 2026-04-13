@@ -1,7 +1,8 @@
-import { courseList } from "@/helper/data_helper";
+
 import Icon_Helper from "@/helper/icon_helper";
 import { useState } from "react";
 import { PageType } from "@/helper/types";
+import { courseList } from "@/helper/data_helper";
 
 interface ContactProps {
   onNavigate?: (page: PageType) => void;

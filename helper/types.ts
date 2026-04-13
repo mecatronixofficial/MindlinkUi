@@ -1,5 +1,4 @@
 // types.ts (optional but recommended)
-
 export type PageType =
   | "home"
   | "courses"
@@ -16,17 +15,27 @@ export type CourseSlug =
   | "feedback"
   | "family";
 
-export type Course = {
-  id: string;
+export interface Course {
+  id: CourseSlug;
   title: string;
   duration: string;
   price: number;
-  earlyPrice: number;
+  discount: number;
+
+  readonly earlyPrice: number;
+
   badge: string;
-  emoji: string;
+  emoji: React.ReactNode;
+
   description: string;
   longDesc: string;
   image: string;
+
   modules: string[];
   outcomes: string[];
-};
+
+  // future-ready
+  featured?: boolean;
+  category?: string;
+  level?: "Beginner" | "Intermediate" | "Advanced";
+}
