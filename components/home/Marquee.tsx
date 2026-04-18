@@ -1,23 +1,24 @@
 // components/Marquee.tsx
 "use client";
 
+import Icon_Helper from "@/helper/icon_helper";
 import { useState, useEffect } from "react";
 
 const Marquee = () => {
   const [isPaused, setIsPaused] = useState(false);
   
   const items = [
-    { icon: '🏆', text: 'ICF Accredited Programs', color: 'from-yellow-400 to-orange-500' },
-    { icon: '🌍', text: 'Global Curriculum', color: 'from-blue-400 to-cyan-500' },
-    { icon: '📜', text: 'Industry-Recognized Certificates', color: 'from-green-400 to-emerald-500' },
-    { icon: '👩‍🏫', text: 'Expert-Led Live Sessions', color: 'from-purple-400 to-pink-500' },
-    { icon: '🤝', text: 'Lifetime Alumni Network', color: 'from-indigo-400 to-blue-500' },
-    { icon: '💻', text: 'Online & Offline Modes', color: 'from-red-400 to-orange-500' },
-    { icon: '🎓', text: '3,200+ Graduates', color: 'from-pink-400 to-rose-500' },
-    { icon: '✨', text: 'Next Batch May 15, 2026', color: 'from-yellow-400 to-amber-500' },
-    { icon: '⚡', text: 'Limited Seats Available', color: 'from-orange-400 to-red-500' },
-    { icon: '🎯', text: '100% Placement Assistance', color: 'from-teal-400 to-green-500' },
-  ];
+  { icon: Icon_Helper.hero.robot, text: 'AI-Driven HR Training Programs', color: 'from-purple-400 to-pink-500' },
+  { icon: Icon_Helper.hero.heart, text: 'Certified Life Coaching Modules', color: 'from-green-400 to-emerald-500' },
+  { icon: Icon_Helper.hero.shield, text: 'POSH Act Compliance Training', color: 'from-blue-400 to-cyan-500' },
+  { icon: Icon_Helper.arrow.tradeup, text: 'Business Strategy & Leadership Skills', color: 'from-orange-400 to-red-500' },
+  { icon: Icon_Helper.hero.chatbox, text: 'Advanced Communication & Counselling', color: 'from-indigo-400 to-purple-500' },
+  { icon: Icon_Helper.hero.family, text: 'Family & Relationship Coaching', color: 'from-rose-400 to-pink-500' },
+  { icon: Icon_Helper.hero.cap, text: '3,000+ Certified Professionals', color: 'from-yellow-400 to-orange-500' },
+  { icon: Icon_Helper.cource.globe, text: 'Globally Relevant Curriculum', color: 'from-blue-400 to-cyan-500' },
+  { icon: Icon_Helper.hero.certificate, text: 'Industry-Recognized Certification', color: 'from-green-400 to-emerald-500' },
+  { icon: Icon_Helper.hero.lightning, text: 'Limited Seats – Enroll Now', color: 'from-orange-400 to-red-500' },
+];
 
   // Duplicate items for seamless loop
   const marqueeItems = [...items, ...items, ...items, ...items];
@@ -51,28 +52,34 @@ const Marquee = () => {
             animationPlayState: isPaused ? "paused" : "running"
           }}
         >
-          {marqueeItems.map((item, idx) => (
-            <div
-              key={idx}
-              className="group relative flex items-center gap-3 cursor-pointer transition-all duration-300 hover:scale-110"
-            >
-              {/* Glow Effect on Hover */}
-              <div className="absolute inset-0 bg-white/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              
-              {/* Icon with Gradient Background */}
-              <div className={`relative w-8 h-8 bg-gradient-to-br ${item.color} rounded-lg flex items-center justify-center shadow-lg transform transition-transform duration-300 group-hover:rotate-12`}>
-                <span className="text-base filter drop-shadow">{item.icon}</span>
-              </div>
-              
-              {/* Text */}
-              <span className="relative text-white text-xs md:text-sm tracking-wide font-semibold uppercase">
-                {item.text}
-              </span>
-              
-              {/* Separator with Pulse Effect */}
-              <span className="w-1.5 h-1.5 bg-white/60 rounded-full mx-2 group-last:hidden animate-pulse"></span>
-            </div>
-          ))}
+          {marqueeItems.map((item, idx) => {
+  const Icon = item.icon;
+
+  return (
+    <div
+      key={idx}
+      className="group relative flex items-center gap-3 cursor-pointer transition-all duration-300 hover:scale-110"
+    >
+      {/* Glow */}
+      <div className="absolute inset-0 bg-white/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+      {/* Icon Box */}
+      <div
+        className={`relative w-8 h-8 bg-gradient-to-br ${item.color} rounded-lg flex items-center justify-center shadow-lg transform transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110`}
+      >
+        <Icon className="text-white text-sm drop-shadow size-19" />
+      </div>
+
+      {/* Text */}
+      <span className="relative text-white text-xs md:text-sm tracking-wide font-semibold uppercase">
+        {item.text}
+      </span>
+
+      {/* Dot */}
+      <span className="w-1.5 h-1.5 bg-white/60 rounded-full mx-2 group-last:hidden animate-pulse"></span>
+    </div>
+  );
+})}
         </div>
       </div>
 

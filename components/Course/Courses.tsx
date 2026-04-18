@@ -7,6 +7,7 @@ import Icon_Helper from "@/helper/icon_helper";
 import { CourseSlug, PageType } from "@/helper/types";
 import { useState } from "react";
 
+
 type Props = {
   onNavigate: (page: PageType) => void;  // Add this prop
   onCourseDetail: (slug: CourseSlug) => void;
@@ -15,12 +16,14 @@ type Props = {
 const CoursesGrid = ({ onNavigate, onCourseDetail }: Props) => {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
 
+ 
+
   return (
     <div className="max-w-7xl mx-auto pb-20 pt-28 px-6">
       {/* Section Header */}
       <div className="text-center mb-12">
         <div className="inline-block mb-4">
-          <div className="bg-red-600 text-white text-xs font-bold px-4 py-1.5 rounded-full tracking-wider">
+          <div className="bg-red-600 text-white text-sm font-bold px-4 py-1.5 rounded-full tracking-wider">
             OUR PROGRAMS
           </div>
         </div>
@@ -68,8 +71,9 @@ const CoursesGrid = ({ onNavigate, onCourseDetail }: Props) => {
               </div>
 
               {/* Price Tag (Optional - you can add price to course data) */}
-              <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm text-red-600 text-xs font-bold px-2 py-1 rounded-lg">
-                ⚡ Hot
+              <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm text-red-600 text-xs font-bold px-2 py-2 rounded-lg flex items-center gap-1">
+                 <Icon_Helper.hero.lightning/>Hot
+                 
               </div>
             </div>
 
@@ -86,17 +90,18 @@ const CoursesGrid = ({ onNavigate, onCourseDetail }: Props) => {
               {/* Course Meta Info */}
               <div className="flex items-center gap-4 mb-4 text-xs text-gray-400">
                 <div className="flex items-center gap-1">
-                  <Icon_Helper.cource.clock size={14} />
+                  <Icon_Helper.cource.clock size={18}  className=" text-red-500  "  />
                   <span>{course.duration}</span>
                 </div>
-                <div className="flex items-center gap-1">
-                  <span>📹</span>
-                  <span>Live Classes</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <span>🎓</span>
-                  <span>Certificate</span>
-                </div>
+                 <div className="flex items-center gap-1">
+                        <Icon_Helper.hero.camera size={18} className="w-4 h-4 text-red-500 " />
+                      <span>Live Classes</span>
+                    </div>
+
+                    <div className="flex items-center gap-1 ">
+                      <Icon_Helper.hero.certificate size={18} className="w-4 h-4 text-red-500 "  />
+                      <span>Certificate</span>
+                    </div>
               </div>
 
               {/* Action Buttons */}
@@ -119,9 +124,9 @@ const CoursesGrid = ({ onNavigate, onCourseDetail }: Props) => {
               {/* Hover Effect Extra Info */}
               <div className={`mt-3 overflow-hidden transition-all duration-300 ${hoveredCard === course.id ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0'}`}>
                 <div className="pt-2 text-xs text-red-600 font-semibold flex items-center gap-2">
-                  <span>✨</span>
-                  Limited seats available
-                  <span>✨</span>
+                <Icon_Helper.hero.stars className="w-5 h-5 text-yellow-500" />
+              Limited seats available
+              <Icon_Helper.hero.stars className="w-5 h-5 text-yellow-500" />
                 </div>
               </div>
             </div>

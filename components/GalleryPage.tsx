@@ -1,6 +1,7 @@
 // components/GalleryPage.tsx
 "use client";
 
+import Icon_Helper from "@/helper/icon_helper";
 import { useEffect, useState, useRef } from "react";
 
 export default function GalleryPage() {
@@ -56,7 +57,7 @@ export default function GalleryPage() {
                 OUR GALLERY
               </div>
             </div>
-            <h1 className="text-5xl md:text-6xl font-black text-gray-900 mb-4">
+            <h1 className="text-5xl md:text-6xl font-black text-gray-900 mb-4 semibold">
               Life at{" "}
               <span className="text-red-600">MindLink</span>
             </h1>
@@ -86,22 +87,22 @@ export default function GalleryPage() {
           {/* Stats Bar */}
           <div className={`grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="bg-white rounded-2xl p-4 text-center shadow-md border border-gray-100">
-              <div className="text-3xl mb-1">📸</div>
+              <div className="flex justify-center items-center text-3xl mb-2"><Icon_Helper.hero.camera className="text-red"/></div>
               <div className="text-2xl font-black text-gray-900">50+</div>
               <div className="text-xs text-gray-500">Moments Captured</div>
             </div>
             <div className="bg-white rounded-2xl p-4 text-center shadow-md border border-gray-100">
-              <div className="text-3xl mb-1">👥</div>
+              <div className="flex justify-center items-center text-3xl mb-2"><Icon_Helper.hero.family className="text-red"/></div>
               <div className="text-2xl font-black text-gray-900">1,000+</div>
               <div className="text-xs text-gray-500">Happy Faces</div>
             </div>
             <div className="bg-white rounded-2xl p-4 text-center shadow-md border border-gray-100">
-              <div className="text-3xl mb-1">🏆</div>
+              <div className="flex justify-center items-center text-3xl mb-2"><Icon_Helper.hero.cup className="text-red"/></div>
               <div className="text-2xl font-black text-gray-900">24+</div>
               <div className="text-xs text-gray-500">Events Yearly</div>
             </div>
             <div className="bg-white rounded-2xl p-4 text-center shadow-md border border-gray-100">
-              <div className="text-3xl mb-1">🎯</div>
+              <div className="flex justify-center items-center text-3xl mb-2"><Icon_Helper.hero.target className="text-red"/></div>
               <div className="text-2xl font-black text-gray-900">100%</div>
               <div className="text-xs text-gray-500">Engagement</div>
             </div>
@@ -174,7 +175,7 @@ export default function GalleryPage() {
             <div className="flex flex-col md:flex-row justify-between items-center gap-6">
               <div className="flex items-center gap-4">
                 <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center text-3xl">
-                  🎥
+                  <Icon_Helper.hero.camera/>
                 </div>
                 <div>
                   <h3 className="text-xl font-bold">Watch Our Campus Tour</h3>

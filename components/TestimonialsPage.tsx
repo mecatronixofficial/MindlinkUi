@@ -36,7 +36,7 @@ export default function TestimonialsPage() {
       quote: "The HR & AI course completely changed how I approach talent management. I implemented AI tools in my company within a week. My CEO was amazed by the results.",
       rating: 5,
       achievement: "Promoted within 3 months",
-      image: "👩‍💼"
+      
     },
     {
       initials: "SK",
@@ -45,7 +45,7 @@ export default function TestimonialsPage() {
       quote: "The Women's Safety course gave me something no one else ever had — real confidence. I finally understand my rights and feel equipped to protect myself and others.",
       rating: 5,
       achievement: "Certified Safety Trainer",
-      image: "🛡️"
+      
     },
     {
       initials: "AM",
@@ -54,7 +54,7 @@ export default function TestimonialsPage() {
       quote: "Life coaching at EMPZON isn't just theory — it's a journey. I lost 12kg, built a morning routine, and found a purpose I didn't know I was missing.",
       rating: 5,
       achievement: "Started own coaching practice",
-      image: "💚"
+     
     },
     {
       initials: "RK",
@@ -63,7 +63,7 @@ export default function TestimonialsPage() {
       quote: "The Business & Vision Challenge pushed me beyond every limit. My startup pitch was funded within 3 months of completing the course.",
       rating: 5,
       achievement: "$500K Seed Funding",
-      image: "🚀"
+     
     },
     {
       initials: "NP",
@@ -72,7 +72,7 @@ export default function TestimonialsPage() {
       quote: "The Feedback Counselling course transformed my leadership style. My team's productivity increased by 35% in just 2 months.",
       rating: 5,
       achievement: "Best Manager Award",
-      image: "🏆"
+      
     },
     {
       initials: "SM",
@@ -81,16 +81,36 @@ export default function TestimonialsPage() {
       quote: "Family Counselling at EMPZON helped me reconnect with my teenage son. The tools they gave us broke years of miscommunication.",
       rating: 5,
       achievement: "Family Harmony Restored",
-      image: "❤️"
+      
     },
   ];
 
   const featuredStats = [
-    { value: "3,200+", label: "Graduates", icon: "👨‍🎓", color: "from-red-500 to-orange-500" },
-    { value: "4.9★", label: "Average Rating", icon: "⭐", color: "from-yellow-500 to-orange-500" },
-    { value: "98%", label: "Recommend", icon: "👍", color: "from-green-500 to-emerald-500" },
-    { value: "150+", label: "5-Star Reviews", icon: "💯", color: "from-blue-500 to-cyan-500" },
-  ];
+  {
+    value: "3,200+",
+    label: "Graduates",
+    icon: Icon_Helper.hero.cap,
+    color: "from-red-500 to-orange-500",
+  },
+  {
+    value: "4.9★",
+    label: "Average Rating",
+    icon: Icon_Helper.hero.lightning,
+    color: "from-yellow-500 to-orange-500",
+  },
+  {
+    value: "98%",
+    label: "Recommend",
+    icon: Icon_Helper.hero.heart,
+    color: "from-green-500 to-emerald-500",
+  },
+  {
+    value: "150+",
+    label: "5-Star Reviews",
+    icon: Icon_Helper.testimonial.star,
+    color: "from-blue-500 to-cyan-500",
+  },
+];
 
   return (
     <div className="min-h-screen pt-28 pb-20 bg-gradient-to-b from-white via-gray-50 to-white">
@@ -116,13 +136,30 @@ export default function TestimonialsPage() {
 
           {/* Featured Stats Bar */}
           <div className={`grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            {featuredStats.map((stat, idx) => (
-              <div key={idx} className="bg-white rounded-2xl p-4 text-center shadow-md border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <div className="text-3xl mb-2">{stat.icon}</div>
-                <div className="text-2xl font-black text-gray-900">{stat.value}</div>
-                <div className="text-xs text-gray-500">{stat.label}</div>
-              </div>
-            ))}
+            {featuredStats.map((item, idx) => {
+  const Icon = item.icon;
+
+  return (
+    <div
+      key={item.label}
+      className="text-center group"
+    >
+      <div
+        className={`w-12 h-12 mx-auto mb-2 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center shadow-md group-hover:scale-110 transition-transform`}
+      >
+        <Icon className="w-5 h-5 text-white" />
+      </div>
+
+      <div className="text-xl font-bold text-gray-900">
+        {item.value}
+      </div>
+
+      <div className="text-xs text-gray-500">
+        {item.label}
+      </div>
+    </div>
+  );
+})}
           </div>
 
           {/* Testimonials Grid - Modern Card Design */}
@@ -167,7 +204,7 @@ export default function TestimonialsPage() {
                   {/* Achievement Badge */}
                   <div className={`mb-4 overflow-hidden transition-all duration-300 ${activeIndex === idx ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0'}`}>
                     <div className="inline-flex items-center gap-2 bg-green-50 text-green-600 text-xs font-semibold px-2 py-1 rounded-full">
-                      <span>🏆</span>
+                     <Icon_Helper.hero.cup/>
                       {t.achievement}
                     </div>
                   </div>
@@ -177,9 +214,6 @@ export default function TestimonialsPage() {
                     <div className="relative">
                       <div className="w-12 h-12 rounded-full bg-gradient-to-br from-red-600 to-red-700 flex items-center justify-center text-white font-bold text-base shadow-md transition-all duration-300 group-hover:scale-110">
                         {t.initials}
-                      </div>
-                      <div className="absolute -bottom-1 -right-1 text-lg transform scale-0 group-hover:scale-100 transition-transform duration-300">
-                        {t.image}
                       </div>
                     </div>
                     <div className="flex-1">
@@ -207,7 +241,7 @@ export default function TestimonialsPage() {
           <div className={`mt-16 bg-gradient-to-r from-red-600 to-red-700 rounded-2xl p-8 text-white transition-all duration-700 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
-                <div className="text-4xl mb-4">🎥</div>
+                <div className="text-4xl mb-4"><Icon_Helper.hero.camera/></div>
                 <h3 className="text-2xl font-bold mb-2">Watch Success Stories</h3>
                 <p className="text-red-100 mb-4">
                   See how our graduates transformed their lives and careers through our programs
@@ -229,8 +263,8 @@ export default function TestimonialsPage() {
                   <div className="text-xs text-red-200">Views</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-black">4.9★</div>
-                  <div className="text-xs text-red-200">Rating</div>
+                  <div className="text-3xl font-black flex items-center gap-1">4.9<Icon_Helper.testimonial.star/></div>
+                  <div className="text-xs text-red-200 flex items-center gap-1">Rating</div>
                 </div>
               </div>
             </div>
@@ -240,8 +274,8 @@ export default function TestimonialsPage() {
           <div className={`text-center mt-12 transition-all duration-700 delay-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
             <div className="inline-block bg-gray-50 rounded-2xl p-6 border border-gray-200">
               <p className="text-gray-600 mb-3">Ready to write your own success story?</p>
-              <button className="bg-red-600 text-white px-8 py-3 rounded-full font-bold hover:bg-red-700 transition-all duration-300 hover:shadow-lg hover:scale-105">
-                Join Our Next Batch →
+              <button className="bg-red-600 text-white px-8 py-3 rounded-full font-bold hover:bg-red-700 transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center gap-1">
+                Join Our Next Batch<Icon_Helper.arrow.right/>
               </button>
             </div>
           </div>

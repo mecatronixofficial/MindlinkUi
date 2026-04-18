@@ -28,6 +28,11 @@ export default function CourseDetailPage({
   const course = courses[slug];
   if (!course) return null;
 
+
+
+
+
+
   return (
     <div className="min-h-screen">
       {/* Hero */}
@@ -39,11 +44,12 @@ export default function CourseDetailPage({
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
         <div className="max-w-7xl mx-auto relative z-10 w-full">
-          <button
+                    <button
             onClick={onBack}
             className="flex items-center gap-2 bg-white/20 border border-white/30 text-white px-4 py-2 rounded-lg text-sm font-semibold mb-6 hover:bg-white/30 transition-all"
           >
-            ← Back to Courses
+            <Icon_Helper.arrow.right size={20}/>
+            Back to Courses
           </button>
           <div className="inline-block bg-[#d42b2b] text-white text-[10px] font-bold px-4 py-1.5 rounded-full tracking-wider uppercase mb-4">
             {course.duration} Program
@@ -54,13 +60,13 @@ export default function CourseDetailPage({
           <p className="text-white/80 max-w-xl">{course.description}</p>
           <div className="flex flex-wrap gap-6 mt-6">
             <div className="flex items-center gap-2 text-white/80 text-sm">
-              <Icon_Helper.cource.clock size={16} /> {course.duration}
+              <Icon_Helper.cource.clock size={20} className="text-red-500" /> {course.duration}
             </div>
             <div className="flex items-center gap-2 text-white/80 text-sm">
-              <Icon_Helper.cource.globe size={16} /> Online & Offline
+              <Icon_Helper.cource.globe size={20} className="text-red-500" /> Online & Offline
             </div>
             <div className="flex items-center gap-2 text-white/80 text-sm">
-              <Icon_Helper.cource.award size={16} /> Certified
+              <Icon_Helper.cource.award size={20} className="text-red-500" /> Certified
             </div>
           </div>
         </div>
@@ -108,7 +114,8 @@ export default function CourseDetailPage({
                     key={idx}
                     className="bg-[#fdf0f0] rounded-xl p-3 flex gap-3"
                   >
-                    <span className="text-[#d42b2b] font-bold">✓</span>
+                    <span className="text-[#d42b2b] font-bold">
+                      <Icon_Helper.approch.check size={26}/></span>
                     <p className="text-sm text-gray-700">{outcome}</p>
                   </div>
                 ))}
@@ -125,10 +132,10 @@ export default function CourseDetailPage({
                 Early enrollment: {course.earlyPrice} (save 15%)
               </div>
               <button
-                onClick={onEnroll}
-                className="w-full bg-[#d42b2b] text-white py-3 rounded-xl font-bold uppercase tracking-wider text-sm hover:bg-[#a81f1f] transition-all mb-4"
+            onClick={onEnroll}
+            className="flex items-center gap-2 bg-red border border-white/30 text-white px-4 py-2 rounded-lg text-sm font-semibold mb-6 hover:bg-black transition-all"
               >
-                Enroll Now →
+                Enroll Now <Icon_Helper.arrow.right size={20}/>
               </button>
               <div className="space-y-3">
                 <div className="flex justify-between text-sm py-2 border-b border-[#f5e0e0]">

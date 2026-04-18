@@ -1,4 +1,5 @@
 import Icon_Helper from "./icon_helper";
+import ImgHelper from "./img_helper";
 import { Course, CourseSlug, PageType } from "./types";
 
 export const courses: Record<CourseSlug, Course> = {
@@ -17,8 +18,10 @@ export const courses: Record<CourseSlug, Course> = {
       "The future of HR is intelligent, data-driven, and automated. This course puts you ahead of the curve.",
     longDesc:
       "The HR landscape is being rapidly reshaped by Artificial Intelligence...",
-    image:
-      "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&q=80",
+    
+    // ✅ FIXED HERE
+    image: ImgHelper.courses.hr,
+
     modules: [
       "Foundations of Modern HR",
       "AI-Powered Talent Acquisition",
@@ -41,8 +44,8 @@ export const courses: Record<CourseSlug, Course> = {
 
   health: {
     id: "health",
-    title: "Life & Health Coaching",
-    duration: "2 Months",
+    title: "Life Coaching",
+    duration: "45 Days",
     price: 14500,
     discount: 15,
     get earlyPrice() {
@@ -54,8 +57,10 @@ export const courses: Record<CourseSlug, Course> = {
       "A holistic journey to wellness — mind, body, and soul.",
     longDesc:
       "This course is more than a certification — it's a complete life reset...",
-    image:
-      "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80",
+    
+    // ✅ (Optional: you can keep URL OR use ImgHelper)
+    image: ImgHelper.courses.life,
+
     modules: [
       "Foundations of Wellness Coaching",
       "Nutrition & Lifestyle Science",
@@ -74,8 +79,8 @@ export const courses: Record<CourseSlug, Course> = {
 
   safety: {
     id: "safety",
-    title: "Women's Safety Training",
-    duration: "6 Weeks",
+    title: "POSH Act ",
+    duration: "2 Months",
     price: 7500,
     discount: 15,
     get earlyPrice() {
@@ -87,8 +92,9 @@ export const courses: Record<CourseSlug, Course> = {
       "Every woman deserves to feel safe and empowered.",
     longDesc:
       "This is more than a training program — it's a movement...",
-    image:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80",
+    
+    image: ImgHelper.courses.Posh,
+
     modules: [
       "Awareness & Risk Assessment",
       "Physical Self-Defense Basics",
@@ -115,13 +121,14 @@ export const courses: Record<CourseSlug, Course> = {
       return Math.round(this.price * 0.85);
     },
     badge: "New",
-    emoji: Icon_Helper.arrow.tradeup,
+    
     description:
       "Turn your vision into a scalable business reality.",
     longDesc:
       "Most businesses fail not from lack of effort, but lack of vision...",
-    image:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80",
+    
+    image: ImgHelper.courses.Business,
+
     modules: [
       "Vision Architecture",
       "Business Growth Frameworks",
@@ -141,8 +148,8 @@ export const courses: Record<CourseSlug, Course> = {
 
   feedback: {
     id: "feedback",
-    title: "Feedback Counselling Tool",
-    duration: "6 Weeks",
+    title: "Feedback Counselling Cource",
+    duration: " 2 Months",
     price: 9500,
     discount: 15,
     get earlyPrice() {
@@ -154,8 +161,9 @@ export const courses: Record<CourseSlug, Course> = {
       "Transform how you communicate and give feedback.",
     longDesc:
       "This program helps you become a master communicator...",
-    image:
-      "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80",
+    
+    image: ImgHelper.courses.feedback,
+
     modules: [
       "Psychology of Feedback",
       "Frameworks (SBI, COIN, GROW)",
@@ -175,7 +183,7 @@ export const courses: Record<CourseSlug, Course> = {
   family: {
     id: "family",
     title: "Family Counselling",
-    duration: "2 Months",
+    duration: "Still Problem Solving",
     price: 13500,
     discount: 15,
     get earlyPrice() {
@@ -187,8 +195,9 @@ export const courses: Record<CourseSlug, Course> = {
       "Build stronger, healthier family relationships.",
     longDesc:
       "Understand family systems and create positive change...",
-    image:
-      "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80",
+    
+    image: ImgHelper.courses.Family,
+
     modules: [
       "Family Systems Theory",
       "Attachment Styles",
