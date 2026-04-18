@@ -61,10 +61,7 @@ export default function Footer({ onNavigate, onCourseDetail }: FooterProps) {
             {/* Social Links */}
             <div className="flex gap-3 pt-2">
               {socialLinks.map((social) => {
-                const Icon =
-                  typeof social.icon === "string"
-                    ? null
-                    : (social.icon as React.ElementType);
+                const Icon = (social.icon as React.ElementType);
 
                 return (
                   <a
@@ -73,11 +70,10 @@ export default function Footer({ onNavigate, onCourseDetail }: FooterProps) {
                     className={`w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-[#ffdddd] ${social.color} hover:text-white transition-all duration-300 hover:scale-110 hover:shadow-lg`}
                     aria-label={social.name}
                   >
-                    {Icon ? (
+                
                       <Icon className="w-5 h-5" />
-                    ) : (
-                      <span className="text-lg">{social.icon}</span>
-                    )}
+                
+                   
                   </a>
                 );
               })}
