@@ -9,7 +9,10 @@ import {
   FaBrain,
   FaGlobeAfrica,
   FaHandshake,
+  FaHouseDamage,
+  FaInstagramSquare,
   FaLink,
+  FaLinkedin,
   FaMedal,
   FaSmileBeam,
   FaThumbsUp,
@@ -17,7 +20,8 @@ import {
   FaUserShield,
   FaUserTie,
 } from "react-icons/fa";
-import { GiStairsGoal, GiStrong } from "react-icons/gi";
+import { FaSquareXTwitter, FaSquareYoutube } from "react-icons/fa6";
+import { GiAirplaneDeparture, GiStairsGoal, GiStrong } from "react-icons/gi";
 import { HiAcademicCap } from "react-icons/hi";
 import { HiMiniTrophy } from "react-icons/hi2";
 import { IoMdChatboxes } from "react-icons/io";
@@ -44,6 +48,7 @@ import {
   TbClockHour4Filled,
   TbTargetArrow,
 } from "react-icons/tb";
+import { TiTick } from "react-icons/ti";
 
 const Icon_Helper = {
   arrow: {
@@ -75,15 +80,18 @@ const Icon_Helper = {
     goal: GiStairsGoal,
     smile: FaSmileBeam,
     camera: BiSolidVideoRecording,
+    Plane:GiAirplaneDeparture,
   },
   approch: {
     brain: FaBrain,
     strong: GiStrong,
     thumbsup: FaThumbsUp,
     Schedulecheck: AiFillSchedule,
+    check:TiTick,
   },
   testimonial: {
     star: RiStarSFill,
+    office:FaHouseDamage,
   },
   cource: {
     globe: FaGlobeAfrica,
@@ -95,6 +103,10 @@ const Icon_Helper = {
     phone: PiPhoneFill,
     mail: BiLogoGmail,
     link: FaLink,
+    insta:FaInstagramSquare,
+    linked:FaLinkedin,
+    youtub: FaSquareYoutube,
+    twiter: FaSquareXTwitter,
   },
 };
 

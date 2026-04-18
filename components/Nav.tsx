@@ -1,9 +1,11 @@
 "use client";
 
-import Icon_Helper from "@/helper/icon_helper";
+import Icon_Helper from "@/helper/icon_helper"; 
 import { useState, useEffect } from "react";
 import { courseSlugs, navLinks } from "@/helper/data_helper";
 import { CourseSlug, PageType } from "@/helper/types";
+import ImgHelper from "@/helper/img_helper";
+import Image from "next/image";
 
 interface NavProps {
   activePage: PageType | CourseSlug | null;
@@ -37,7 +39,7 @@ const Nav = ({ activePage, onNavigate }: NavProps) => {
     <>
       <nav
         className={`fixed top-4 left-4 right-4 md:top-6 md:left-6 md:right-6 z-50 transition-all duration-300 ${
-          isScrolled ? "md:top-4 md:left-4 md:right-4" : ""
+          isScrolled ? "md:top-4 md:left-4 md:right-4": "" 
         }`}
       >
         <div
@@ -56,15 +58,20 @@ const Nav = ({ activePage, onNavigate }: NavProps) => {
               >
                 <div className="absolute -inset-1 bg-gradient-to-r from-[#FF3366] to-[#FF6B3D] rounded-lg blur opacity-0 group-hover:opacity-50 transition duration-300"></div>
                 <div className="relative flex items-center gap-2">
-                  <div className="w-7 h-7 md:w-8 md:h-8 bg-gradient-to-br from-[#FF3366] to-[#FF6B3D] rounded-lg flex items-center justify-center shadow-lg">
-                    <span className="text-white font-black text-sm md:text-base">
-                      M
-                    </span>
-                  </div>
-                  <span className="text-white font-bold text-lg md:text-xl tracking-tight">
-                    Mindlink
-                  </span>
-                </div>
+  <div className="w-8 h-8 md:w-9 md:h-9 rounded-lg overflow-hidden shadow-lg">
+    <Image
+      src={ImgHelper.logo.Main}
+      alt="Mindlink Logo"
+      width={40}
+      height={40}
+      className="object-cover w-full h-full"
+    />
+  </div>
+
+  <span className="text-black font-bold text-lg md:text-xl tracking-tight">
+    Mindlink
+  </span>
+</div>
               </button>
 
               {/* Desktop Menu */}
