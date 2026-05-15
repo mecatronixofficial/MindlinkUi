@@ -6,6 +6,7 @@ import {
   useNavigation,
 } from "@/components/contexts/NavigationContext";
 
+import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Hero from "@/components/home/Hero";

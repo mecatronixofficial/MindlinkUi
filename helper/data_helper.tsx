@@ -13,15 +13,12 @@ export const courses: Record<CourseSlug, Course> = {
       return Math.round(this.price * (1 - this.discount / 100));
     },
     badge: "New Batch",
-    emoji: Icon_Helper.hero.robot,
+    emoji: <Icon_Helper.hero.robot />,
     description:
       "The future of HR is intelligent, data-driven, and automated. This course puts you ahead of the curve.",
     longDesc:
       "The HR landscape is being rapidly reshaped by Artificial Intelligence...",
-    
-    // ✅ FIXED HERE
     image: ImgHelper.courses.hr,
-
     modules: [
       "Foundations of Modern HR",
       "AI-Powered Talent Acquisition",
@@ -52,15 +49,12 @@ export const courses: Record<CourseSlug, Course> = {
       return Math.round(this.price * 0.85);
     },
     badge: "Top Rated",
-    emoji: Icon_Helper.hero.heart,
+    emoji: <Icon_Helper.hero.heart />,
     description:
       "A holistic journey to wellness — mind, body, and soul.",
     longDesc:
       "This course is more than a certification — it's a complete life reset...",
-    
-    // ✅ (Optional: you can keep URL OR use ImgHelper)
     image: ImgHelper.courses.life,
-
     modules: [
       "Foundations of Wellness Coaching",
       "Nutrition & Lifestyle Science",
@@ -87,14 +81,12 @@ export const courses: Record<CourseSlug, Course> = {
       return Math.round(this.price * 0.85);
     },
     badge: "Empowering",
-    emoji: Icon_Helper.hero.shield,
+    emoji: <Icon_Helper.hero.shield />,
     description:
       "Every woman deserves to feel safe and empowered.",
     longDesc:
       "This is more than a training program — it's a movement...",
-    
     image: ImgHelper.courses.Posh,
-
     modules: [
       "Awareness & Risk Assessment",
       "Physical Self-Defense Basics",
@@ -121,14 +113,12 @@ export const courses: Record<CourseSlug, Course> = {
       return Math.round(this.price * 0.85);
     },
     badge: "New",
-    
+    emoji: <Icon_Helper.hero.target />,
     description:
       "Turn your vision into a scalable business reality.",
     longDesc:
       "Most businesses fail not from lack of effort, but lack of vision...",
-    
     image: ImgHelper.courses.Business,
-
     modules: [
       "Vision Architecture",
       "Business Growth Frameworks",
@@ -156,14 +146,12 @@ export const courses: Record<CourseSlug, Course> = {
       return Math.round(this.price * 0.85);
     },
     badge: "Trending",
-    emoji: Icon_Helper.hero.chatbox,
+    emoji: <Icon_Helper.hero.chatbox />,
     description:
       "Transform how you communicate and give feedback.",
     longDesc:
       "This program helps you become a master communicator...",
-    
     image: ImgHelper.courses.feedback,
-
     modules: [
       "Psychology of Feedback",
       "Frameworks (SBI, COIN, GROW)",
@@ -190,14 +178,12 @@ export const courses: Record<CourseSlug, Course> = {
       return Math.round(this.price * 0.85);
     },
     badge: "Popular",
-    emoji: Icon_Helper.hero.family,
+    emoji: <Icon_Helper.hero.family />,
     description:
       "Build stronger, healthier family relationships.",
     longDesc:
       "Understand family systems and create positive change...",
-    
-    image: ImgHelper.courses.Family,
-
+    image: <ImgHelper.courses.Family />,
     modules: [
       "Family Systems Theory",
       "Attachment Styles",
@@ -215,11 +201,9 @@ export const courses: Record<CourseSlug, Course> = {
   },
 };
 
-// derived data
 export const courseList = Object.values(courses);
 export const courseSlugs = Object.keys(courses) as CourseSlug[];
 
-// navigation
 export const navLinks: { label: string; page: PageType }[] = [
   { label: "Home", page: "home" },
   { label: "Courses", page: "courses" },
