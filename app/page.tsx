@@ -1,36 +1,32 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
 import {
   NavigationProvider,
-  Page,
   useNavigation,
 } from "@/components/contexts/NavigationContext";
 
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-
 import Hero from "@/components/home/Hero";
 import Marquee from "@/components/home/Marquee";
 import WhyChoose from "@/components/home/WhyChoose";
-
 import ApproachPage from "@/components/ApproachPage";
 import TestimonialsPage from "@/components/TestimonialsPage";
 import GalleryPage from "@/components/GalleryPage";
 import Contact from "@/components/Contact";
-
 import CourseDetailPage from "@/components/Course/CourseDetail";
 import CoursesGrid from "@/components/Course/Courses";
 
-import { CourseSlug } from "@/helper/types";
+import { CourseSlug, PageType } from "@/helper/types";
 
 // Loading Spinner Component
 function LoadingSpinner() {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/80 backdrop-blur-sm">
       <div className="flex flex-col items-center gap-3">
-        <div className="w-12 h-12 border-4 border-[#d42b2b] border-t-transparent rounded-full animate-spin" />
+        <div className="w-12 h-12 border-4 border-[#d42b2b] border-t-transparent rounded-full animate-spin"></div>
+
         <p className="text-[#d42b2b] text-sm font-semibold animate-pulse">
           Loading...
         </p>
@@ -49,15 +45,16 @@ function PageContent() {
 
   // Navigation with loader
   const handleNavigateWithLoading = async (
-    page: Page
+    page: PageType
   ) => {
-    if (activePage === page && !currentCourseDetail) return;
+    if (activePage === page && !currentCourseDetail)
+      return;
 
     setIsLoading(true);
 
     setCurrentCourseDetail(null);
 
-    // Smooth transition delay
+    // Smooth transition
     await new Promise((resolve) =>
       setTimeout(resolve, 50)
     );
@@ -93,7 +90,7 @@ function PageContent() {
     });
   };
 
-  // Enroll action
+  // Enroll button
   const handleEnroll = () => {
     setCurrentCourseDetail(null);
 
@@ -105,11 +102,9 @@ function PageContent() {
     });
   };
 
-  // Active nav state
-  const activeForNav: Page =
-    currentCourseDetail
-      ? "courses"
-      : (activePage as Page);
+  // Fix type issue
+  const activeForNav: PageType =
+    currentCourseDetail ? "courses" : activePage;
 
   // Reveal animations
   useEffect(() => {
@@ -124,22 +119,21 @@ function PageContent() {
           el.classList.remove("visible")
         );
 
-        const observer =
-          new IntersectionObserver(
-            (entries) => {
-              entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                  entry.target.classList.add(
-                    "visible"
-                  );
-                }
-              });
-            },
-            {
-              threshold: 0.08,
-              rootMargin: "0px 0px -50px 0px",
-            }
-          );
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add(
+                  "visible"
+                );
+              }
+            });
+          },
+          {
+            threshold: 0.08,
+            rootMargin: "0px 0px -50px 0px",
+          }
+        );
 
         reveals.forEach((el) =>
           observer.observe(el)
@@ -157,7 +151,7 @@ function PageContent() {
     return <LoadingSpinner />;
   }
 
-  // Course Detail View
+  // Course Detail Page
   if (currentCourseDetail) {
     return (
       <>
@@ -185,7 +179,7 @@ function PageContent() {
   return (
     <>
       <Nav
-        activePage={activePage as Page}
+        activePage={activePage}
         onNavigate={handleNavigateWithLoading}
         onCourseDetail={handleCourseDetail}
       />
@@ -194,9 +188,7 @@ function PageContent() {
         {activePage === "home" && (
           <>
             <Hero
-              onNavigate={
-                handleNavigateWithLoading
-              }
+              onNavigate={handleNavigateWithLoading}
             />
 
             <Marquee />
@@ -207,12 +199,8 @@ function PageContent() {
 
         {activePage === "courses" && (
           <CoursesGrid
-            onNavigate={
-              handleNavigateWithLoading
-            }
-            onCourseDetail={
-              handleCourseDetail
-            }
+            onNavigate={handleNavigateWithLoading}
+            onCourseDetail={handleCourseDetail}
           />
         )}
 
@@ -228,9 +216,7 @@ function PageContent() {
           <GalleryPage />
         )}
 
-        {activePage === "contact" && (
-          <Contact />
-        )}
+        {activePage === "contact" && <Contact />}
       </main>
 
       <Footer

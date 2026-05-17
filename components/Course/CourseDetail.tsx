@@ -3,6 +3,7 @@
 
 import { courses } from "@/helper/data_helper";
 import Icon_Helper from "@/helper/icon_helper";
+import Image from "next/image";
 
 type CourseSlug =
   | "hr-ai"
@@ -37,7 +38,7 @@ export default function CourseDetailPage({
     <div className="min-h-screen">
       {/* Hero */}
       <div className="relative min-h-[55vh] flex items-end pb-12 pt-28 px-6">
-        <img
+        <Image
           src={course.image}
           alt={course.title}
           className="absolute inset-0 w-full h-full object-cover"

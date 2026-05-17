@@ -1,36 +1,58 @@
-// contexts/NavigationContext.tsx
 "use client";
 
-import { createContext, useContext, useState, ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+} from "react";
 
-export type Page = "home" | "courses" | "approach" | "testimonials" | "gallery" | "contact";
+import { PageType } from "@/helper/types";
 
-interface NavigationContextType {
-  activePage: Page;
-  navigateTo: (page: Page) => void;
-}
+type NavigationContextType = {
+  activePage: PageType;
+  navigateTo: (page: PageType) => void;
+};
 
-const NavigationContext = createContext<NavigationContextType | undefined>(undefined);
+const NavigationContext =
+  createContext<NavigationContextType | undefined>(
+    undefined
+  );
 
-export function NavigationProvider({ children }: { children: ReactNode }) {
-  const [activePage, setActivePage] = useState<Page>("home");
+export function NavigationProvider({
+  children,
+}: {
+  children: ReactNode;
+}) {
+  const [activePage, setActivePage] =
+    useState<PageType>("home");
 
-  const navigateTo = (page: Page) => {
+  const navigateTo = (page: PageType) => {
     setActivePage(page);
-    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
-    <NavigationContext.Provider value={{ activePage, navigateTo }}>
+    <NavigationContext.Provider
+      value={{
+        activePage,
+        navigateTo,
+      }}
+    >
       {children}
     </NavigationContext.Provider>
   );
 }
 
 export function useNavigation() {
-  const context = useContext(NavigationContext);
+  const context = useContext(
+    NavigationContext
+  );
+
   if (!context) {
-    throw new Error("useNavigation must be used within a NavigationProvider");
+    throw new Error(
+      "useNavigation must be used within NavigationProvider"
+    );
   }
+
   return context;
 }
