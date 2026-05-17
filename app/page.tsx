@@ -39,7 +39,7 @@ function PageContent() {
   const { activePage, navigateTo } = useNavigation();
 
   const [isLoading, setIsLoading] = useState(false);
-
+console.log("hii active")
   const [currentCourseDetail, setCurrentCourseDetail] =
     useState<CourseSlug | null>(null);
 
