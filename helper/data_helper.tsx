@@ -9,17 +9,21 @@ export const courses: Record<CourseSlug, Course> = {
     duration: "3 Months",
     price: 18500,
     discount: 15,
+
     get earlyPrice() {
       return Math.round(this.price * (1 - this.discount / 100));
     },
+
     badge: "New Batch",
-    emoji: Icon_Helper.hero.robot,
+
+    emoji: <Icon_Helper.hero.robot />,
+
     description:
       "The future of HR is intelligent, data-driven, and automated. This course puts you ahead of the curve.",
+
     longDesc:
       "The HR landscape is being rapidly reshaped by Artificial Intelligence...",
-    
-    // ✅ FIXED HERE
+
     image: ImgHelper.courses.hr,
 
     modules: [
@@ -30,6 +34,7 @@ export const courses: Record<CourseSlug, Course> = {
       "AI Performance Management",
       "Future of Work & Capstone Project",
     ],
+
     outcomes: [
       "Confidently implement AI tools in your HR workflow",
       "Build a data-driven HR strategy from scratch",
@@ -38,7 +43,9 @@ export const courses: Record<CourseSlug, Course> = {
       "Lead your company's digital HR transformation",
       "Join a network of 800+ certified HR professionals",
     ],
+
     featured: true,
+
     level: "Intermediate",
   },
 
@@ -48,17 +55,21 @@ export const courses: Record<CourseSlug, Course> = {
     duration: "45 Days",
     price: 14500,
     discount: 15,
+
     get earlyPrice() {
       return Math.round(this.price * 0.85);
     },
+
     badge: "Top Rated",
-    emoji: Icon_Helper.hero.heart,
+
+    emoji: <Icon_Helper.hero.heart />,
+
     description:
       "A holistic journey to wellness — mind, body, and soul.",
+
     longDesc:
       "This course is more than a certification — it's a complete life reset...",
-    
-    // ✅ (Optional: you can keep URL OR use ImgHelper)
+
     image: ImgHelper.courses.life,
 
     modules: [
@@ -68,31 +79,38 @@ export const courses: Record<CourseSlug, Course> = {
       "Habit Architecture",
       "Certified Coaching Practice",
     ],
+
     outcomes: [
       "Build a sustainable personal wellness routine",
       "Become a certified life & health coach",
       "Help clients achieve transformative results",
       "Develop deep emotional resilience",
     ],
+
     level: "Beginner",
   },
 
   safety: {
     id: "safety",
-    title: "POSH Act ",
+    title: "POSH Act",
     duration: "2 Months",
     price: 7500,
     discount: 15,
+
     get earlyPrice() {
       return Math.round(this.price * 0.85);
     },
+
     badge: "Empowering",
-    emoji: Icon_Helper.hero.shield,
+
+    emoji: <Icon_Helper.hero.shield />,
+
     description:
       "Every woman deserves to feel safe and empowered.",
+
     longDesc:
       "This is more than a training program — it's a movement...",
-    
+
     image: ImgHelper.courses.Posh,
 
     modules: [
@@ -102,12 +120,14 @@ export const courses: Record<CourseSlug, Course> = {
       "Digital Safety & Online Protection",
       "Emotional Resilience & Recovery",
     ],
+
     outcomes: [
       "Recognize and respond to threats confidently",
       "Know your full legal rights in India",
       "Protect yourself online",
       "Build lasting emotional resilience",
     ],
+
     level: "Beginner",
   },
 
@@ -117,16 +137,21 @@ export const courses: Record<CourseSlug, Course> = {
     duration: "2 Months",
     price: 21000,
     discount: 15,
+
     get earlyPrice() {
       return Math.round(this.price * 0.85);
     },
+
     badge: "New",
-    
+
+    emoji: <Icon_Helper.hero.target />,
+
     description:
       "Turn your vision into a scalable business reality.",
+
     longDesc:
       "Most businesses fail not from lack of effort, but lack of vision...",
-    
+
     image: ImgHelper.courses.Business,
 
     modules: [
@@ -137,31 +162,38 @@ export const courses: Record<CourseSlug, Course> = {
       "Leadership & Executive Presence",
       "The Vision Challenge Pitch",
     ],
+
     outcomes: [
       "A clear business growth plan",
       "Leadership mindset",
       "Network with entrepreneurs",
       "Pitch-ready strategy",
     ],
+
     level: "Advanced",
   },
 
   feedback: {
     id: "feedback",
-    title: "Feedback Counselling Cource",
-    duration: " 2 Months",
+    title: "Feedback Counselling Course",
+    duration: "2 Months",
     price: 9500,
     discount: 15,
+
     get earlyPrice() {
       return Math.round(this.price * 0.85);
     },
+
     badge: "Trending",
-    emoji: Icon_Helper.hero.chatbox,
+
+    emoji: <Icon_Helper.hero.chatbox />,
+
     description:
       "Transform how you communicate and give feedback.",
+
     longDesc:
       "This program helps you become a master communicator...",
-    
+
     image: ImgHelper.courses.feedback,
 
     modules: [
@@ -171,12 +203,14 @@ export const courses: Record<CourseSlug, Course> = {
       "Difficult Conversations",
       "Feedback Culture",
     ],
+
     outcomes: [
       "Deliver impactful feedback",
       "Handle tough conversations",
       "Build strong teams",
       "Become certified",
     ],
+
     level: "Intermediate",
   },
 
@@ -186,16 +220,21 @@ export const courses: Record<CourseSlug, Course> = {
     duration: "Still Problem Solving",
     price: 13500,
     discount: 15,
+
     get earlyPrice() {
       return Math.round(this.price * 0.85);
     },
+
     badge: "Popular",
-    emoji: Icon_Helper.hero.family,
+
+    emoji: <Icon_Helper.hero.family />,
+
     description:
       "Build stronger, healthier family relationships.",
+
     longDesc:
       "Understand family systems and create positive change...",
-    
+
     image: ImgHelper.courses.Family,
 
     modules: [
@@ -205,22 +244,27 @@ export const courses: Record<CourseSlug, Course> = {
       "Parenting",
       "Counselling Ethics",
     ],
+
     outcomes: [
       "Break unhealthy patterns",
       "Improve communication",
       "Become a counsellor",
       "Create positive change",
     ],
+
     level: "Beginner",
   },
 };
 
-// derived data
 export const courseList = Object.values(courses);
-export const courseSlugs = Object.keys(courses) as CourseSlug[];
 
-// navigation
-export const navLinks: { label: string; page: PageType }[] = [
+export const courseSlugs =
+  Object.keys(courses) as CourseSlug[];
+
+export const navLinks: {
+  label: string;
+  page: PageType;
+}[] = [
   { label: "Home", page: "home" },
   { label: "Courses", page: "courses" },
   { label: "Approach", page: "approach" },

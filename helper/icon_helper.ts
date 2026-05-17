@@ -108,6 +108,9 @@ const Icon_Helper = {
     youtub: FaSquareYoutube,
     twiter: FaSquareXTwitter,
   },
+  gallery:{
+  
+  }
 };
 
 export default Icon_Helper;

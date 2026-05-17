@@ -52,7 +52,7 @@ export default function Contact({ onNavigate }: ContactProps) {
     {
       icon: <Icon_Helper.contact.phone size={22} />,
       title: "Call Us",
-      content: "+91 98765 43210\n+91 98765 43211",
+      content: "+91 9894012596\n+91 8056046856",
       detail: "Mon–Sat, 9am – 7pm"
     },
     {

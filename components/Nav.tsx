@@ -58,7 +58,7 @@ const Nav = ({ activePage, onNavigate }: NavProps) => {
               >
                 <div className="absolute -inset-1 bg-gradient-to-r from-[#FF3366] to-[#FF6B3D] rounded-lg blur opacity-0 group-hover:opacity-50 transition duration-300"></div>
                 <div className="relative flex items-center gap-2">
-  <div className="w-8 h-8 md:w-9 md:h-9 rounded-lg overflow-hidden shadow-lg">
+  <div className="w-8 h-8 md:w-9 md:h-9 rounded-lg overflow-hidden">
     <Image
       src={ImgHelper.logo.Main}
       alt="Mindlink Logo"

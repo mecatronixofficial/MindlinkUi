@@ -109,7 +109,7 @@
                 
                 <div className="space-y-8">
     {steps.map((step, idx) => {
-      const Icon = typeof step.icon === "string" ? null : step.icon;
+      const Icon = step.icon;
 
       return (
         <div
@@ -146,11 +146,9 @@
               </p>
 
               <div className="flex items-center gap-2 text-xs text-gray-400">
-                {Icon ? (
+              
                   <Icon size={20} className="w-4 h-4 text-red-500" />
-                ) : (
-                  <span>{step.icon}</span>
-                )}
+             
                 <span>Phase {step.num}</span>
               </div>
 

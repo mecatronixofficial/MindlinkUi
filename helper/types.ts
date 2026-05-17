@@ -1,11 +1,7 @@
-// types.ts (optional but recommended)
-export type PageType =
-  | "home"
-  | "courses"
-  | "approach"
-  | "testimonials"
-  | "gallery"
-  | "contact";
+// helper/types.ts
+
+import { ReactNode } from "react";
+import { StaticImageData } from "next/image";
 
 export type CourseSlug =
   | "hr-ai"
@@ -15,27 +11,39 @@ export type CourseSlug =
   | "feedback"
   | "family";
 
-export interface Course {
+export type PageType =
+  | "home"
+  | "courses"
+  | "approach"
+  | "testimonials"
+  | "gallery"
+  | "contact"
+  | "about";
+
+export type Course = {
   id: CourseSlug;
+
   title: string;
   duration: string;
+
   price: number;
   discount: number;
-
-  readonly earlyPrice: number;
+  earlyPrice: number;
 
   badge: string;
-  emoji: React.ReactNode;
+
+  emoji: ReactNode;
 
   description: string;
   longDesc: string;
-  image: string;
+
+  // FIX HERE
+  image: StaticImageData | string;
 
   modules: string[];
   outcomes: string[];
 
-  // future-ready
   featured?: boolean;
-  category?: string;
-  level?: "Beginner" | "Intermediate" | "Advanced";
-}
+
+  level: string;
+};
