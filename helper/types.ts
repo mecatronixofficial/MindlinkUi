@@ -11,12 +11,14 @@ export type CourseSlug =
   | "feedback"
   | "family";
 
-export type PageType =
+type Page =
   | "home"
   | "courses"
   | "approach"
   | "testimonials"
-  | "gallery";
+  | "gallery"
+  | "about"
+  | "contact";
 
 export type Course = {
   id: CourseSlug;
