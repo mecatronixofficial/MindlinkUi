@@ -1,6 +1,6 @@
 "use client";
 
-import Icon_Helper from "@/helper/icon_helper"; 
+import Icon_Helper from "@/helper/icon_helper";
 import { useState, useEffect } from "react";
 import { courseSlugs, navLinks } from "@/helper/data_helper";
 import { CourseSlug, PageType } from "@/helper/types";
@@ -39,7 +39,7 @@ const Nav = ({ activePage, onNavigate }: NavProps) => {
     <>
       <nav
         className={`fixed top-4 left-4 right-4 md:top-6 md:left-6 md:right-6 z-50 transition-all duration-300 ${
-          isScrolled ? "md:top-4 md:left-4 md:right-4": "" 
+          isScrolled ? "md:top-4 md:left-4 md:right-4" : ""
         }`}
       >
         <div
@@ -58,20 +58,20 @@ const Nav = ({ activePage, onNavigate }: NavProps) => {
               >
                 <div className="absolute -inset-1 bg-gradient-to-r from-[#FF3366] to-[#FF6B3D] rounded-lg blur opacity-0 group-hover:opacity-50 transition duration-300"></div>
                 <div className="relative flex items-center gap-2">
-  <div className="w-8 h-8 md:w-9 md:h-9 rounded-lg overflow-hidden">
-    <Image
-      src={ImgHelper.logo.Main}
-      alt="Mindlink Logo"
-      width={40}
-      height={40}
-      className="object-cover w-full h-full"
-    />
-  </div>
+                  <div className="w-8 h-8 md:w-9 md:h-9 rounded-lg overflow-hidden">
+                    <Image
+                      src={ImgHelper.logo.Main}
+                      alt="Mindlink Logo"
+                      width={40}
+                      height={40}
+                      className="object-cover w-full h-full"
+                    />
+                  </div>
 
-  <span className="text-black font-bold text-lg md:text-xl tracking-tight">
-    Mindlink
-  </span>
-</div>
+                  <span className="text-black font-bold text-lg md:text-xl tracking-tight">
+                    Mindlink
+                  </span>
+                </div>
               </button>
 
               {/* Desktop Menu */}
@@ -82,8 +82,8 @@ const Nav = ({ activePage, onNavigate }: NavProps) => {
                     onClick={() => onNavigate(page)}
                     className={`relative px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${
                       isActive(page)
-                        ? "text-black bg-white/15"
-                        : "text-gray-400 hover:text-white hover:bg-white/15"
+                        ? "text-green-500 bg-white/15"
+                        : "text-black hover:text-white hover:bg-black/15"
                     }`}
                   >
                     {label}
@@ -120,7 +120,7 @@ const Nav = ({ activePage, onNavigate }: NavProps) => {
                 {/* Mobile Menu Toggle */}
                 <button
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                  className="md:hidden relative w-10 h-10 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-200 flex items-center justify-center"
+                  className="md:hidden relative w-10 h-10 rounded-lg bg-black/5 hover:bg-black/10 transition-all duration-200 flex items-center justify-center"
                 >
                   <div className="relative w-5 h-5">
                     {/* Line 1 */}
