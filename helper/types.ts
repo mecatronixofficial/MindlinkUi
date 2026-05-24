@@ -9,7 +9,11 @@ export type CourseSlug =
   | "safety"
   | "business"
   | "feedback"
-  | "family";
+  | "family"
+  | "lawOfAttraction"
+  | "searchIntelligence"
+  | "personalityDevelopment"
+  | "problemSolving";
 
 export type PageType =
   | "home"

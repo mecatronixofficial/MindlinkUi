@@ -21,15 +21,29 @@ export default function Footer({ onNavigate, onCourseDetail }: FooterProps) {
   };
 
   const socialLinks = [
-    { name: "Instagram", icon: Icon_Helper.contact.insta, color: "hover:bg-white/20" },
-    { name: "LinkedIn", icon: Icon_Helper.contact.linked, color: "hover:bg-white/20" },
-    { name: "YouTube", icon: Icon_Helper.contact.youtub, color: "hover:bg-white/20" },
-    { name: "Twitter", icon: Icon_Helper.contact.twiter, color: "hover:bg-white/20" },
+    {
+      name: "Instagram",
+      icon: Icon_Helper.contact.insta,
+      color: "hover:bg-white/20",
+    },
+    {
+      name: "LinkedIn",
+      icon: Icon_Helper.contact.linked,
+      color: "hover:bg-white/20",
+    },
+    {
+      name: "YouTube",
+      icon: Icon_Helper.contact.youtub,
+      color: "hover:bg-white/20",
+    },
+    {
+      name: "Twitter",
+      icon: Icon_Helper.contact.twiter,
+      color: "hover:bg-white/20",
+    },
   ];
 
- const users = ["P", "B", "S", "D"];
-
-
+  const users = ["P", "B", "S", "D"];
 
   return (
     <footer className="relative bg-gradient-to-br from-[#d42b2b] to-[#8b1a1a] pt-16 pb-8 overflow-hidden">
@@ -54,14 +68,14 @@ export default function Footer({ onNavigate, onCourseDetail }: FooterProps) {
             </div>
 
             <p className="text-[#ffdddd] text-sm leading-relaxed">
-              Empowering individuals through education, coaching, safety, and growth.
-              Join the MindLink movement and transform your life today.
+              Empowering individuals through education, coaching, safety, and
+              growth. Join the MindLink movement and transform your life today.
             </p>
 
             {/* Social Links */}
             <div className="flex gap-3 pt-2">
               {socialLinks.map((social) => {
-                const Icon = (social.icon as React.ElementType);
+                const Icon = social.icon as React.ElementType;
 
                 return (
                   <a
@@ -70,10 +84,7 @@ export default function Footer({ onNavigate, onCourseDetail }: FooterProps) {
                     className={`w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-[#ffdddd] ${social.color} hover:text-white transition-all duration-300 hover:scale-110 hover:shadow-lg`}
                     aria-label={social.name}
                   >
-                
-                      <Icon className="w-5 h-5" />
-                
-                   
+                    <Icon className="w-5 h-5" />
                   </a>
                 );
               })}
@@ -130,7 +141,8 @@ export default function Footer({ onNavigate, onCourseDetail }: FooterProps) {
               Stay Updated
             </h3>
             <p className="text-[#ffdddd] text-sm mb-4">
-              Get the latest updates on new courses, events, and exclusive offers.
+              Get the latest updates on new courses, events, and exclusive
+              offers.
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-3">
@@ -165,7 +177,9 @@ export default function Footer({ onNavigate, onCourseDetail }: FooterProps) {
                   </div>
                 ))}
               </div>
-              <span className="text-[#ffdddd] text-xs">Join 10,000+ happy learners</span>
+              <span className="text-[#ffdddd] text-xs">
+                Join 10,000+ happy learners
+              </span>
             </div>
           </div>
         </div>
@@ -175,17 +189,32 @@ export default function Footer({ onNavigate, onCourseDetail }: FooterProps) {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-[#ffdddd] text-xs">
               © 2026 MindLink Institute. All rights reserved. |
-              <button className="hover:text-white ml-1 transition-colors">Privacy Policy</button> |
-              <button className="hover:text-white ml-1 transition-colors">Terms of Service</button>
+              <button className="hover:text-white ml-1 transition-colors">
+                Privacy Policy
+              </button>{" "}
+              |
+              <button className="hover:text-white ml-1 transition-colors">
+                Terms of Service
+              </button>
             </p>
 
             {/* Payment Methods */}
-            <div className="flex gap-3">
-              {["Visa", "Mastercard", "PayPal", "Stripe"].map((method) => (
-                <span key={method} className="text-[#ffcccc]/70 text-xs font-mono">
-                  {method}
+            <div className="flex flex-col items-center justify-center gap-4 text-xs text-white sm:flex-row">
+              <p>
+                
+                Designed By{" "}
+                <span>
+                  <a
+                    href="https://www.mecatronix.one"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-amber-400 transition-colors"
+                  >
+                    Mecatronix
+                  </a>
                 </span>
-              ))}
+                .
+              </p>
             </div>
           </div>
         </div>
