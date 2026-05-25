@@ -49,7 +49,6 @@ function PageContent() {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  // FIXED TYPE
   const [currentCourseDetail, setCurrentCourseDetail] =
     useState<CourseSlug | null>(null);
 

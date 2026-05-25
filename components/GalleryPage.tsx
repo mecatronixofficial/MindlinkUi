@@ -9,7 +9,7 @@ import ImgHelper from "@/helper/img_helper";
 
 export default function GalleryPage() {
   const [isVisible, setIsVisible] = useState(false);
-  const [activeImage, setActiveImage] = useState<number | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -21,7 +21,7 @@ export default function GalleryPage() {
           setIsVisible(true);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     if (sectionRef.current) {
@@ -33,19 +33,19 @@ export default function GalleryPage() {
 
   const galleryItems = [
     {
-      image: ImgHelper.Gallery.Work,
-      caption: "EMPZON Main Campus",
-      span: true,
-      icon: Icon_Helper.testimonial.office,
-      category: "Campus",
-      date: "2025",
-    },
-    {
       image: ImgHelper.Gallery.Workshop,
       caption: "AI & HR Workshop",
       span: false,
       icon: Icon_Helper.hero.robot,
       category: "Workshop",
+      date: "2025",
+    },
+    {
+      image: ImgHelper.Gallery.Work,
+      caption: "EMPZON Main Campus",
+      span: true,
+      icon: Icon_Helper.testimonial.office,
+      category: "Campus",
       date: "2025",
     },
     {
@@ -75,7 +75,7 @@ export default function GalleryPage() {
     {
       image: ImgHelper.Gallery.FamilyCounselling,
       caption: "Family Counselling Program",
-      span: false,
+      span: true,
       icon: Icon_Helper.hero.family,
       category: "Counselling",
       date: "2025",
@@ -91,9 +91,17 @@ export default function GalleryPage() {
     {
       image: ImgHelper.Gallery.GraduationCeremony,
       caption: "Graduation Ceremony 2025",
-      span: false,
+      span: true,
       icon: Icon_Helper.hero.cap,
       category: "Ceremony",
+      date: "2025",
+    },
+    {
+      image: ImgHelper.Gallery.HealthCoaching,
+      caption: "Health Coaching Retreat",
+      span: false,
+      icon: Icon_Helper.hero.heart,
+      category: "Retreat",
       date: "2025",
     },
   ];
@@ -108,20 +116,15 @@ export default function GalleryPage() {
     "Ceremony",
   ];
 
-  const [selectedCategory, setSelectedCategory] = useState("All");
-
   const filteredItems =
     selectedCategory === "All"
       ? galleryItems
-      : galleryItems.filter(
-          (item) => item.category === selectedCategory
-        );
+      : galleryItems.filter((item) => item.category === selectedCategory);
 
   return (
     <div className="min-h-screen pt-28 pb-20 bg-gradient-to-b from-white via-gray-50 to-white">
       <section ref={sectionRef} className="px-6">
         <div className="max-w-7xl mx-auto">
-
           {/* Header */}
           <div
             className={`text-center mb-12 transition-all duration-700 ${
@@ -137,16 +140,14 @@ export default function GalleryPage() {
             </div>
 
             <h1 className="text-5xl md:text-6xl font-black text-gray-900 mb-4">
-              Life at{" "}
-              <span className="text-red-600">MindLink</span>
+              Life at <span className="text-red-600">MindLink</span>
             </h1>
 
             <div className="w-24 h-1 bg-red-600 mx-auto mb-6"></div>
 
             <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-              A glimpse into our classrooms, workshops,
-              and the powerful moments of growth that
-              happen every day.
+              A glimpse into our classrooms, workshops, and the powerful moments
+              of growth that happen every day.
             </p>
           </div>
 
@@ -185,48 +186,32 @@ export default function GalleryPage() {
               <div className="flex justify-center items-center text-3xl mb-2">
                 <Icon_Helper.hero.camera className="text-red-600" />
               </div>
-              <div className="text-2xl font-black text-gray-900">
-                50+
-              </div>
-              <div className="text-xs text-gray-500">
-                Moments Captured
-              </div>
+              <div className="text-2xl font-black text-gray-900">50+</div>
+              <div className="text-xs text-gray-500">Moments Captured</div>
             </div>
 
             <div className="bg-white rounded-2xl p-4 text-center shadow-md border border-gray-100">
               <div className="flex justify-center items-center text-3xl mb-2">
                 <Icon_Helper.hero.family className="text-red-600" />
               </div>
-              <div className="text-2xl font-black text-gray-900">
-                1,000+
-              </div>
-              <div className="text-xs text-gray-500">
-                Happy Faces
-              </div>
+              <div className="text-2xl font-black text-gray-900">1,000+</div>
+              <div className="text-xs text-gray-500">Happy Faces</div>
             </div>
 
             <div className="bg-white rounded-2xl p-4 text-center shadow-md border border-gray-100">
               <div className="flex justify-center items-center text-3xl mb-2">
                 <Icon_Helper.hero.cup className="text-red-600" />
               </div>
-              <div className="text-2xl font-black text-gray-900">
-                24+
-              </div>
-              <div className="text-xs text-gray-500">
-                Events Yearly
-              </div>
+              <div className="text-2xl font-black text-gray-900">24+</div>
+              <div className="text-xs text-gray-500">Events Yearly</div>
             </div>
 
             <div className="bg-white rounded-2xl p-4 text-center shadow-md border border-gray-100">
               <div className="flex justify-center items-center text-3xl mb-2">
                 <Icon_Helper.hero.target className="text-red-600" />
               </div>
-              <div className="text-2xl font-black text-gray-900">
-                100%
-              </div>
-              <div className="text-xs text-gray-500">
-                Engagement
-              </div>
+              <div className="text-2xl font-black text-gray-900">100%</div>
+              <div className="text-xs text-gray-500">Engagement</div>
             </div>
           </div>
 
@@ -243,17 +228,12 @@ export default function GalleryPage() {
                 style={{
                   transitionDelay: `${300 + idx * 100}ms`,
                 }}
-                onMouseEnter={() => setActiveImage(idx)}
-                onMouseLeave={() => setActiveImage(null)}
               >
                 <div className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
-
                   {/* Image */}
                   <div
                     className={`relative overflow-hidden ${
-                      item.span
-                        ? "aspect-[16/9]"
-                        : "aspect-[4/3]"
+                      item.span ? "aspect-[16/9]" : "aspect-[4/3]"
                     }`}
                   >
                     <Image
@@ -265,26 +245,25 @@ export default function GalleryPage() {
                     />
 
                     {/* Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-red-900/80 via-red-600/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-red-900/80 via-red-600/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                    {/* Category */}
+                    {/* Category Badge */}
                     <div className="absolute top-3 left-3 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-lg shadow-md transform -translate-y-12 group-hover:translate-y-0 transition-transform duration-300">
                       {item.category}
                     </div>
 
-                    {/* Date */}
-                    <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-red-600 text-xs font-bold px-2 py-1 rounded-lg shadow-md transform translate-y-12 group-hover:translate-y-0 transition-transform duration-300">
+                    {/* Date Badge */}
+                    <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-red-600 text-xs font-bold px-2 py-1 rounded-lg shadow-md transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
                       {item.date}
                     </div>
 
-                    {/* Content */}
+                    {/* Caption & CTA */}
                     <div className="absolute inset-0 flex items-end p-5 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
                       <div className="w-full">
                         <div className="flex items-center gap-2 mb-2">
                           <span className="transform scale-0 group-hover:scale-100 transition-transform duration-300 delay-100">
                             <item.icon className="w-7 h-7 text-white" />
                           </span>
-
                           <span className="text-white font-bold text-lg line-clamp-1">
                             {item.caption}
                           </span>
@@ -297,8 +276,8 @@ export default function GalleryPage() {
                     </div>
                   </div>
 
-                  {/* Bottom Border */}
-                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-red-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                  {/* Bottom Accent Border */}
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-red-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
                 </div>
               </div>
             ))}
@@ -311,9 +290,7 @@ export default function GalleryPage() {
             }`}
           >
             <div className="inline-flex flex-col items-center gap-4">
-              <p className="text-gray-600">
-                Want to be part of these moments?
-              </p>
+              <p className="text-gray-600">Want to be part of these moments?</p>
 
               <div className="flex gap-4 flex-wrap justify-center">
                 <button className="bg-red-600 text-white px-8 py-3 rounded-full font-bold hover:bg-red-700 transition-all duration-300 hover:shadow-lg">
@@ -326,7 +303,6 @@ export default function GalleryPage() {
               </div>
             </div>
           </div>
-
         </div>
       </section>
     </div>
