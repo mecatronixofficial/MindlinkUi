@@ -36,12 +36,12 @@ export type Course = {
 
   badge: string;
 
+  // JSX element
   emoji: ReactNode;
 
   description: string;
   longDesc: string;
 
-  // FIX HERE
   image: StaticImageData | string;
 
   modules: string[];

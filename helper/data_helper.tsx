@@ -1,6 +1,7 @@
 import Icon_Helper from "./icon_helper";
 import ImgHelper from "./img_helper";
 import { Course, CourseSlug, PageType } from "./types";
+import { ReactNode } from "react";
 
 export const courses: Record<CourseSlug, Course> = {
   "hr-ai": {
