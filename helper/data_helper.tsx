@@ -1,6 +1,7 @@
 import Icon_Helper from "./icon_helper";
 import ImgHelper from "./img_helper";
 import { Course, CourseSlug, PageType } from "./types";
+import { ReactNode } from "react";
 
 export const courses: Record<CourseSlug, Course> = {
   "hr-ai": {
@@ -64,8 +65,7 @@ export const courses: Record<CourseSlug, Course> = {
 
     emoji: <Icon_Helper.hero.heart />,
 
-    description:
-      "A holistic journey to wellness — mind, body, and soul.",
+    description: "A holistic journey to wellness — mind, body, and soul.",
 
     longDesc:
       "This course is more than a certification — it's a complete life reset...",
@@ -105,11 +105,9 @@ export const courses: Record<CourseSlug, Course> = {
 
     emoji: <Icon_Helper.hero.shield />,
 
-    description:
-      "Every woman deserves to feel safe and empowered.",
+    description: "Every woman deserves to feel safe and empowered.",
 
-    longDesc:
-      "This is more than a training program — it's a movement...",
+    longDesc: "This is more than a training program — it's a movement...",
 
     image: ImgHelper.courses.Posh,
 
@@ -146,8 +144,7 @@ export const courses: Record<CourseSlug, Course> = {
 
     emoji: <Icon_Helper.hero.target />,
 
-    description:
-      "Turn your vision into a scalable business reality.",
+    description: "Turn your vision into a scalable business reality.",
 
     longDesc:
       "Most businesses fail not from lack of effort, but lack of vision...",
@@ -188,11 +185,9 @@ export const courses: Record<CourseSlug, Course> = {
 
     emoji: <Icon_Helper.hero.chatbox />,
 
-    description:
-      "Transform how you communicate and give feedback.",
+    description: "Transform how you communicate and give feedback.",
 
-    longDesc:
-      "This program helps you become a master communicator...",
+    longDesc: "This program helps you become a master communicator...",
 
     image: ImgHelper.courses.feedback,
 
@@ -229,11 +224,9 @@ export const courses: Record<CourseSlug, Course> = {
 
     emoji: <Icon_Helper.hero.family />,
 
-    description:
-      "Build stronger, healthier family relationships.",
+    description: "Build stronger, healthier family relationships.",
 
-    longDesc:
-      "Understand family systems and create positive change...",
+    longDesc: "Understand family systems and create positive change...",
 
     image: ImgHelper.courses.Family,
 
@@ -254,12 +247,175 @@ export const courses: Record<CourseSlug, Course> = {
 
     level: "Beginner",
   },
+
+  lawOfAttraction: {
+    id: "lawOfAttraction",
+    title: "Law of Attraction Mastery",
+    duration: "30 Days",
+    price: 12500,
+    discount: 20,
+
+    get earlyPrice() {
+      return Math.round(this.price * 0.8);
+    },
+
+    badge: "Most Popular",
+
+    emoji: <Icon_Helper.hero.flex />,
+
+    description:
+      "Unlock the power of positive thinking, manifestation, and purposeful living.",
+
+    longDesc:
+      "This course helps you reprogram your mindset, align your energy with your goals, and build powerful manifestation habits for success, relationships, health, and abundance.",
+
+    image: ImgHelper.courses.attraction,
+
+    modules: [
+      "Introduction to the Law of Attraction",
+      "Mindset Rewiring & Positive Thinking",
+      "Visualization & Manifestation Techniques",
+      "Energy Alignment & Gratitude Practice",
+      "Daily Habits for Abundance & Success",
+    ],
+
+    outcomes: [
+      "Develop a success-oriented mindset",
+      "Practice powerful manifestation techniques",
+      "Improve emotional balance and confidence",
+      "Create a life aligned with your goals",
+    ],
+
+    level: "Beginner",
+  },
+
+  searchIntelligence: {
+    id: "searchIntelligence",
+    title: "Search & Intelligence Course",
+    duration: "40 Days",
+    price: 16500,
+    discount: 18,
+
+    get earlyPrice() {
+      return Math.round(this.price * 0.82);
+    },
+
+    badge: "Trending",
+
+    emoji: <Icon_Helper.hero.cup />,
+
+    description:
+      "Master smart research, analytical thinking, and modern intelligence strategies.",
+
+    longDesc:
+      "Learn how to search effectively, gather valuable information, analyze patterns, and make intelligent decisions using critical thinking and research frameworks.",
+
+    image: ImgHelper.courses.search,
+
+    modules: [
+      "Advanced Search Techniques",
+      "Research & Information Analysis",
+      "Critical Thinking Skills",
+      "Digital Intelligence & Investigation",
+      "Decision-Making Frameworks",
+    ],
+
+    outcomes: [
+      "Improve analytical and research abilities",
+      "Think critically and solve complex problems",
+      "Make data-driven decisions confidently",
+      "Develop modern intelligence skills",
+    ],
+
+    level: "Intermediate",
+  },
+
+  personalityDevelopment: {
+    id: "personalityDevelopment",
+    title: "Personality Development Course",
+    duration: "35 Days",
+    price: 13500,
+    discount: 15,
+
+    get earlyPrice() {
+      return Math.round(this.price * 0.85);
+    },
+
+    badge: "Best Seller",
+
+    emoji: <Icon_Helper.hero.Instructors />,
+
+    description:
+      "Transform your confidence, communication, and personal presence.",
+
+    longDesc:
+      "This course focuses on building self-confidence, communication mastery, leadership qualities, emotional intelligence, and a charismatic personality for personal and professional success.",
+
+    image: ImgHelper.courses.development,
+
+    modules: [
+      "Self-Confidence Building",
+      "Communication & Public Speaking",
+      "Body Language & Personal Presence",
+      "Leadership & Emotional Intelligence",
+      "Professional & Social Etiquette",
+    ],
+
+    outcomes: [
+      "Improve confidence and self-esteem",
+      "Communicate effectively in all situations",
+      "Build leadership and interpersonal skills",
+      "Develop a powerful and positive personality",
+    ],
+
+    level: "Beginner",
+  },
+
+  problemSolving: {
+    id: "problemSolving",
+    title: "Problem Solving Masterclass",
+    duration: "28 Days",
+    price: 11500,
+    discount: 12,
+
+    get earlyPrice() {
+      return Math.round(this.price * 0.88);
+    },
+
+    badge: "Skill Booster",
+
+    emoji: <Icon_Helper.hero.shield />,
+
+    description:
+      "Develop logical thinking and practical strategies to solve real-world challenges.",
+
+    longDesc:
+      "Learn structured problem-solving frameworks, creative thinking methods, and decision-making techniques to handle personal, academic, and professional challenges effectively.",
+
+    image: ImgHelper.courses.problemsolving,
+
+    modules: [
+      "Introduction to Problem Solving",
+      "Logical & Critical Thinking",
+      "Creative Thinking Techniques",
+      "Decision-Making Strategies",
+      "Real-World Problem Solving Practice",
+    ],
+
+    outcomes: [
+      "Think clearly under pressure",
+      "Solve problems with structured methods",
+      "Improve decision-making confidence",
+      "Develop innovative and analytical thinking",
+    ],
+
+    level: "Beginner",
+  },
 };
 
 export const courseList = Object.values(courses);
 
-export const courseSlugs =
-  Object.keys(courses) as CourseSlug[];
+export const courseSlugs = Object.keys(courses) as CourseSlug[];
 
 export const navLinks: {
   label: string;

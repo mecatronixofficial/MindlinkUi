@@ -6,12 +6,18 @@ import Icon_Helper from "@/helper/icon_helper";
 import Image from "next/image";
 
 type CourseSlug =
-  | "hr-ai"
+ | "hr-ai"
   | "health"
   | "safety"
   | "business"
   | "feedback"
-  | "family";
+  | "family"
+  | "lawOfAttraction"
+  | "searchIntelligence"
+  | "personalityDevelopment"
+  | "problemSolving";
+  
+
 
 interface CourseDetailPageProps {
   slug: CourseSlug | null;

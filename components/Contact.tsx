@@ -46,7 +46,7 @@ export default function Contact({ onNavigate }: ContactProps) {
     {
       icon: <Icon_Helper.contact.map size={22} />,
       title: "Our Location",
-      content: "12 MindLink Boulevard, Knowledge Park\nChennai, Tamil Nadu 600001",
+      content: "12 MindLink Boulevard, Knowledge Park\nCoimbatore, Tamil Nadu 604014",
       detail: "Visit our campus for a tour"
     },
     {
@@ -58,7 +58,7 @@ export default function Contact({ onNavigate }: ContactProps) {
     {
       icon: <Icon_Helper.contact.mail size={22} />,
       title: "Email Us",
-      content: "info@mindlink.com\nadmissions@mindlink.com",
+      content: "admin@mindlink.solutions\nacademy@mindlink.solutions",
       detail: "24/7 response within 4 hours"
     },
     {

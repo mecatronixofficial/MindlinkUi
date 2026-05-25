@@ -9,7 +9,11 @@ export type CourseSlug =
   | "safety"
   | "business"
   | "feedback"
-  | "family";
+  | "family"
+  | "lawOfAttraction"
+  | "searchIntelligence"
+  | "personalityDevelopment"
+  | "problemSolving";
 
 export type PageType =
   | "home"
@@ -32,12 +36,12 @@ export type Course = {
 
   badge: string;
 
+  // JSX element
   emoji: ReactNode;
 
   description: string;
   longDesc: string;
 
-  // FIX HERE
   image: StaticImageData | string;
 
   modules: string[];

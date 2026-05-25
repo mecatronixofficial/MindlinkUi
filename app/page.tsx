@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+
 import {
   NavigationProvider,
   useNavigation,
@@ -8,24 +9,29 @@ import {
 
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+
 import Hero from "@/components/home/Hero";
 import Marquee from "@/components/home/Marquee";
 import WhyChoose from "@/components/home/WhyChoose";
+
 import ApproachPage from "@/components/ApproachPage";
 import TestimonialsPage from "@/components/TestimonialsPage";
 import GalleryPage from "@/components/GalleryPage";
 import Contact from "@/components/Contact";
+
 import CourseDetailPage from "@/components/Course/CourseDetail";
 import CoursesGrid from "@/components/Course/Courses";
 
 import { CourseSlug, PageType } from "@/helper/types";
 
-// Loading Spinner Component
+// ==============================
+// Loading Spinner
+// ==============================
 function LoadingSpinner() {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/80 backdrop-blur-sm">
       <div className="flex flex-col items-center gap-3">
-        <div className="w-12 h-12 border-4 border-[#d42b2b] border-t-transparent rounded-full animate-spin"></div>
+        <div className="w-12 h-12 border-4 border-[#d42b2b] border-t-transparent rounded-full animate-spin" />
 
         <p className="text-[#d42b2b] text-sm font-semibold animate-pulse">
           Loading...
@@ -35,25 +41,36 @@ function LoadingSpinner() {
   );
 }
 
+// ==============================
+// Main Page Content
+// ==============================
 function PageContent() {
   const { activePage, navigateTo } = useNavigation();
 
   const [isLoading, setIsLoading] = useState(false);
+
   const [currentCourseDetail, setCurrentCourseDetail] =
     useState<CourseSlug | null>(null);
 
-  // Navigation with loader
+  // ==============================
+  // Navigation
+  // ==============================
   const handleNavigateWithLoading = async (
     page: PageType
   ) => {
-    if (activePage === page && !currentCourseDetail)
+    // prevent reload
+    if (
+      activePage === page &&
+      currentCourseDetail === null
+    ) {
       return;
+    }
 
     setIsLoading(true);
 
+    // clear selected course
     setCurrentCourseDetail(null);
 
-    // Smooth transition
     await new Promise((resolve) =>
       setTimeout(resolve, 50)
     );
@@ -67,7 +84,9 @@ function PageContent() {
     setIsLoading(false);
   };
 
-  // Open course detail
+  // ==============================
+  // Open Course Detail
+  // ==============================
   const handleCourseDetail = (
     slug: CourseSlug
   ) => {
@@ -79,7 +98,9 @@ function PageContent() {
     });
   };
 
-  // Back to courses
+  // ==============================
+  // Back To Courses
+  // ==============================
   const handleBackToCourses = () => {
     setCurrentCourseDetail(null);
 
@@ -89,7 +110,9 @@ function PageContent() {
     });
   };
 
-  // Enroll button
+  // ==============================
+  // Enroll Action
+  // ==============================
   const handleEnroll = () => {
     setCurrentCourseDetail(null);
 
@@ -101,57 +124,67 @@ function PageContent() {
     });
   };
 
-  // Fix type issue
+  // ==============================
+  // Active Nav Fix
+  // ==============================
   const activeForNav: PageType =
-    currentCourseDetail ? "courses" : activePage;
+    currentCourseDetail !== null
+      ? "courses"
+      : activePage;
 
-  // Reveal animations
+  // ==============================
+  // Reveal Animations
+  // ==============================
   useEffect(() => {
-    if (!currentCourseDetail) {
-      const timeout = setTimeout(() => {
-        const reveals =
-          document.querySelectorAll<HTMLElement>(
-            ".reveal"
-          );
+    if (currentCourseDetail !== null) return;
 
-        reveals.forEach((el) =>
-          el.classList.remove("visible")
+    const timeout = setTimeout(() => {
+      const reveals =
+        document.querySelectorAll<HTMLElement>(
+          ".reveal"
         );
 
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add(
-                  "visible"
-                );
-              }
-            });
-          },
-          {
-            threshold: 0.08,
-            rootMargin: "0px 0px -50px 0px",
-          }
-        );
+      reveals.forEach((el) =>
+        el.classList.remove("visible")
+      );
 
-        reveals.forEach((el) =>
-          observer.observe(el)
-        );
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add(
+                "visible"
+              );
+            }
+          });
+        },
+        {
+          threshold: 0.08,
+          rootMargin: "0px 0px -50px 0px",
+        }
+      );
 
-        return () => observer.disconnect();
-      }, 100);
+      reveals.forEach((el) =>
+        observer.observe(el)
+      );
 
-      return () => clearTimeout(timeout);
-    }
+      return () => observer.disconnect();
+    }, 100);
+
+    return () => clearTimeout(timeout);
   }, [activePage, currentCourseDetail]);
 
-  // Loading state
+  // ==============================
+  // Loading Screen
+  // ==============================
   if (isLoading) {
     return <LoadingSpinner />;
   }
 
-  // Course Detail Page
-  if (currentCourseDetail) {
+  // ==============================
+  // Course Detail View
+  // ==============================
+  if (currentCourseDetail !== null) {
     return (
       <>
         <Nav
@@ -174,7 +207,9 @@ function PageContent() {
     );
   }
 
+  // ==============================
   // Main Pages
+  // ==============================
   return (
     <>
       <Nav
@@ -187,7 +222,9 @@ function PageContent() {
         {activePage === "home" && (
           <>
             <Hero
-              onNavigate={handleNavigateWithLoading}
+              onNavigate={
+                handleNavigateWithLoading
+              }
             />
 
             <Marquee />
@@ -215,7 +252,9 @@ function PageContent() {
           <GalleryPage />
         )}
 
-        {activePage === "contact" && <Contact />}
+        {activePage === "contact" && (
+          <Contact />
+        )}
       </main>
 
       <Footer
@@ -226,7 +265,9 @@ function PageContent() {
   );
 }
 
+// ==============================
 // Root Wrapper
+// ==============================
 export default function RootPage() {
   return (
     <NavigationProvider>
