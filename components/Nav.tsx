@@ -177,8 +177,14 @@ const Nav = ({ activePage, onNavigate }: NavProps) => {
           {/* Panel Header */}
           <div className="p-6 border-b border-white/10 flex flex-row items-center justify-between">
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-[#FF3366] to-[#FF6B3D] rounded-xl flex items-center justify-center">
-                <span className="text-white font-black text-lg">M</span>
+              <div className="w-8 h-8 md:w-9 md:h-9 overflow-hidden">
+                <Image
+                  src={ImgHelper.logo.Main}
+                  alt="Mindlink Logo"
+                  width={40}
+                  height={40}
+                  className="object-cover w-full h-full"
+                />
               </div>
               <div>
                 <div className="text-white font-bold text-lg">Mindlink</div>

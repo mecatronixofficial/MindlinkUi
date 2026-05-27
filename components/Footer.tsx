@@ -1,8 +1,9 @@
 // components/Footer.tsx
 "use client";
-
+import Image from "next/image";
 import { courseList } from "@/helper/data_helper";
 import Icon_Helper from "@/helper/icon_helper";
+import ImgHelper from "@/helper/img_helper";
 import { CourseSlug, PageType } from "@/helper/types";
 import { useState } from "react";
 
@@ -58,12 +59,17 @@ export default function Footer({ onNavigate, onCourseDetail }: FooterProps) {
           {/* Brand Section - 4 columns */}
           <div className="lg:col-span-4 space-y-4">
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center shadow-lg backdrop-blur-sm">
-                <span className="text-white font-black text-xl">M</span>
+              <div className="w-8 h-8 md:w-9 md:h-9 overflow-hidden">
+                <Image
+                  src={ImgHelper.logo.Main}
+                  alt="Mindlink Logo"
+                  width={40}
+                  height={40}
+                  className="object-cover w-full h-full"
+                />
               </div>
               <div className="text-2xl font-black tracking-tight">
-                <span className="text-white">Mind</span>
-                <span className="text-[#ffcccc]">Link</span>
+                <span className="text-white">MindLink</span>
               </div>
             </div>
 
@@ -201,7 +207,6 @@ export default function Footer({ onNavigate, onCourseDetail }: FooterProps) {
             {/* Payment Methods */}
             <div className="flex flex-col items-center justify-center gap-4 text-xs text-white sm:flex-row">
               <p>
-                
                 Designed By{" "}
                 <span>
                   <a

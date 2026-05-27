@@ -66,13 +66,42 @@ export default function Hero({ onNavigate }: HeroProps) {
       color: "from-rose-500 to-pink-500",
       subIcon: Icon_Helper.hero.heart,
     },
+
+    {
+  icon: Icon_Helper.hero.handshake,
+  title: "Law of Attraction",
+  description: "Transform thoughts into powerful outcomes",
+  color: "from-violet-500 to-fuchsia-500",
+  subIcon: Icon_Helper.hero.goal,
+},
+{
+  icon: Icon_Helper.hero.certificate,
+  title: "Search Intelligence",
+  description: "Master smart research and information discovery",
+  color: "from-cyan-500 to-blue-500",
+  subIcon: Icon_Helper.hero.flex,
+},
+{
+  icon: Icon_Helper.hero.shield,
+  title: "Personality Development",
+  description: "Enhance confidence, communication, and growth",
+  color: "from-amber-500 to-orange-500",
+  subIcon: Icon_Helper.hero.lightning,
+},
+{
+  icon: Icon_Helper.hero.infinity,
+  title: "Problem Solving",
+  description: "Develop critical thinking and solution skills",
+  color: "from-emerald-500 to-teal-500",
+  subIcon: Icon_Helper.hero.target,
+},
   ];
 
   const stats = [
     { value: "3,200+", label: "Graduates", icon: "👨‍🎓" },
     { value: "4.9★", label: "Avg Rating", icon: "⭐" },
     { value: "94%", label: "Completion", icon: "📊" },
-    { value: "6", label: "Courses", icon: "📚" },
+    { value: "10", label: "Courses", icon: "📚" },
   ];
 
   const testimonials = [
@@ -246,7 +275,7 @@ export default function Hero({ onNavigate }: HeroProps) {
                     Our Programs
                   </p>
                   <h3 className="text-white text-xl font-bold">
-                    6 Core Courses
+                    10 Core Courses
                   </h3>
                 </div>
                 <div className="w-12 h-12 bg-slate-200 rounded-xl flex items-center justify-center">
