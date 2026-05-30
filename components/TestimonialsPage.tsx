@@ -51,7 +51,7 @@ export default function TestimonialsPage() {
       initials: "AM",
       name: "Anjali Menon",
       role: "Health Coaching Graduate",
-      quote: "Life coaching at EMPZON isn't just theory — it's a journey. I lost 12kg, built a morning routine, and found a purpose I didn't know I was missing.",
+      quote: "Life coaching at MINDLINK isn't just theory — it's a journey. I lost 12kg, built a morning routine, and found a purpose I didn't know I was missing.",
       rating: 5,
       achievement: "Started own coaching practice",
      
@@ -78,7 +78,7 @@ export default function TestimonialsPage() {
       initials: "SM",
       name: "Sunita Menon",
       role: "Family Counselling Graduate",
-      quote: "Family Counselling at EMPZON helped me reconnect with my teenage son. The tools they gave us broke years of miscommunication.",
+      quote: "Family Counselling at MINDLINK helped me reconnect with my teenage son. The tools they gave us broke years of miscommunication.",
       rating: 5,
       achievement: "Family Harmony Restored",
       
@@ -136,7 +136,7 @@ export default function TestimonialsPage() {
 
           {/* Featured Stats Bar */}
           <div className={`grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            {featuredStats.map((item, idx) => {
+            {featuredStats.map((item) => {
   const Icon = item.icon;
 
   return (
@@ -197,7 +197,7 @@ export default function TestimonialsPage() {
                   </div>
 
                   {/* Quote Text */}
-                  <p className="text-gray-600 text-sm leading-relaxed mb-5 relative z-10 line-clamp-4 min-h-[80px]">
+                  <p className="text-gray-600 text-base leading-relaxed mb-5 relative z-10 line-clamp-4 min-h-[80px]">
                     &ldquo;{t.quote}&rdquo;
                   </p>
 

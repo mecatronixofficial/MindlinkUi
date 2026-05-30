@@ -35,6 +35,16 @@ const Nav = ({ activePage, onNavigate }: NavProps) => {
     return false;
   };
 
+  const isHomeHero = activePage === "home" && !isScrolled;
+
+  const navBg = isHomeHero
+    ? "bg-transparent backdrop-blur-xl border-white/20"
+    : "bg-transparent backdrop-blur-xl border-black/5 shadow-xl backdrop-blur-xl";
+
+  const navText = isHomeHero ? "text-white" : "text-gray-900";
+
+  const navHover = isHomeHero ? "hover:text-white" : "hover:text-[#FF3366]";
+
   return (
     <>
       <nav
@@ -43,11 +53,7 @@ const Nav = ({ activePage, onNavigate }: NavProps) => {
         }`}
       >
         <div
-          className={`max-w-7xl mx-auto rounded-2xl transition-all duration-300 ${
-            isScrolled
-              ? "bg-transparent backdrop-blur-xl shadow-2xl border border-white/10"
-              : "bg-transparent backdrop-blur-md border border-white/20"
-          }`}
+          className={`max-w-7xl mx-auto rounded-2xl transition-all duration-300 ${navBg}`}
         >
           <div className="px-5 py-3 md:px-6 md:py-4">
             <div className="flex items-center justify-between">
@@ -67,8 +73,9 @@ const Nav = ({ activePage, onNavigate }: NavProps) => {
                       className="object-cover w-full h-full"
                     />
                   </div>
-
-                  <span className="text-black font-bold text-lg md:text-xl tracking-tight">
+                  <span
+                    className={`${navText} font-bold text-lg md:text-xl tracking-tight`}
+                  >
                     Mindlink
                   </span>
                 </div>
@@ -82,8 +89,8 @@ const Nav = ({ activePage, onNavigate }: NavProps) => {
                     onClick={() => onNavigate(page)}
                     className={`relative px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${
                       isActive(page)
-                        ? "text-green-500 bg-white/15"
-                        : "text-black hover:text-white hover:bg-black/15"
+                        ? "text-[#FF3366] bg-white/10"
+                        : `${navText} ${navHover} hover:bg-black/5`
                     }`}
                   >
                     {label}
@@ -120,12 +127,14 @@ const Nav = ({ activePage, onNavigate }: NavProps) => {
                 {/* Mobile Menu Toggle */}
                 <button
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                  className="md:hidden relative w-10 h-10 rounded-lg bg-black/5 hover:bg-black/10 transition-all duration-200 flex items-center justify-center"
+                  className={`md:hidden relative w-10 h-10 rounded-lg transition-all duration-200 flex items-center justify-center ${
+                    isHomeHero ? "bg-white/10" : "bg-black/5"
+                  }`}
                 >
                   <div className="relative w-5 h-5">
                     {/* Line 1 */}
                     <span
-                      className={`absolute left-1/2 h-0.5 w-5 bg-white rounded-full transition-all duration-300 
+                      className={`absolute left-1/2 h-0.5 w-5 ${isHomeHero ? "bg-white" : "bg-black"} rounded-full transition-all duration-300 
       -translate-x-1/2 ${
         isMobileMenuOpen ? "top-1/2 -translate-y-1/2 rotate-45" : "top-[20%]"
       }`}
@@ -133,7 +142,7 @@ const Nav = ({ activePage, onNavigate }: NavProps) => {
 
                     {/* Middle Line */}
                     <span
-                      className={`absolute left-1/2 h-0.5 w-5 bg-white rounded-full transition-all duration-300 
+                      className={`absolute left-1/2 h-0.5 w-5 ${isHomeHero ? "bg-white" : "bg-black"} rounded-full transition-all duration-300 
   -translate-x-1/2 top-1/2 -translate-y-1/2 ${
     isMobileMenuOpen ? "opacity-0" : "opacity-100"
   }`}
@@ -141,7 +150,7 @@ const Nav = ({ activePage, onNavigate }: NavProps) => {
 
                     {/* Line 2 */}
                     <span
-                      className={`absolute left-1/2 h-0.5 w-5 bg-white rounded-full transition-all duration-300 
+                      className={`absolute left-1/2 h-0.5 w-5 ${isHomeHero ? "bg-white" : "bg-black"} rounded-full transition-all duration-300 
       -translate-x-1/2 ${
         isMobileMenuOpen ? "top-1/2 -translate-y-1/2 -rotate-45" : "top-[70%]"
       }`}
@@ -195,12 +204,14 @@ const Nav = ({ activePage, onNavigate }: NavProps) => {
             </div>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden relative w-10 h-10 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-200 flex items-center justify-center"
+              className={`md:hidden relative w-10 h-10 rounded-lg transition-all duration-200 flex items-center justify-center ${
+                isHomeHero ? "bg-white/10" : "bg-black/5"
+              }`}
             >
               <div className="relative w-5 h-5">
                 {/* Line 1 */}
                 <span
-                  className={`absolute left-1/2 h-0.5 w-5 bg-white rounded-full transition-all duration-300 
+                  className={`absolute left-1/2 h-0.5 w-5 ${isHomeHero ? "bg-white" : "bg-black"} rounded-full transition-all duration-300 
       -translate-x-1/2 ${
         isMobileMenuOpen ? "top-1/2 -translate-y-1/2 rotate-45" : "top-[20%]"
       }`}
@@ -208,7 +219,7 @@ const Nav = ({ activePage, onNavigate }: NavProps) => {
 
                 {/* Middle Line */}
                 <span
-                  className={`absolute left-1/2 h-0.5 w-5 bg-white rounded-full transition-all duration-300 
+                  className={`absolute left-1/2 h-0.5 w-5 ${isHomeHero ? "bg-white" : "bg-black"} rounded-full transition-all duration-300 
   -translate-x-1/2 top-1/2 -translate-y-1/2 ${
     isMobileMenuOpen ? "opacity-0" : "opacity-100"
   }`}
@@ -216,7 +227,7 @@ const Nav = ({ activePage, onNavigate }: NavProps) => {
 
                 {/* Line 2 */}
                 <span
-                  className={`absolute left-1/2 h-0.5 w-5 bg-white rounded-full transition-all duration-300 
+                  className={`absolute left-1/2 h-0.5 w-5 ${isHomeHero ? "bg-white" : "bg-black"} rounded-full transition-all duration-300 
       -translate-x-1/2 ${
         isMobileMenuOpen ? "top-1/2 -translate-y-1/2 -rotate-45" : "top-[70%]"
       }`}
@@ -283,10 +294,13 @@ const Nav = ({ activePage, onNavigate }: NavProps) => {
 
       {/* Subtle scroll indicator */}
       {!isScrolled && (
-        <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-40 hidden md:block animate-bounce">
-          <div className="w-6 h-10 rounded-full border-2 border-white/30 flex justify-center">
-            <div className="w-1 h-2 bg-white/50 rounded-full mt-2 animate-pulse"></div>
-          </div>
+        <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-40 hidden md:flex flex-col items-center justify-center animate-bounce">
+          {/* Line */}
+          <div className="w-[2px] h-12 bg-gradient-to-t from-white to-transparent rounded-full animate-pulse" />
+          {/* Scroll Text */}
+          <span className="text-white text-sm font-semibold tracking-wide my-2">
+            Scroll Down
+          </span>
         </div>
       )}
     </>

@@ -189,6 +189,40 @@
     }
   }
 
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0px) translateX(0px);
+      opacity: 0;
+    }
+
+    50% {
+      transform: translateY(-20px) translateX(10px);
+      opacity: 0.5;
+    }
+  }
+
+  @keyframes blink {
+
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0;
+    }
+  }
+
+  .animate-float {
+    animation: float linear infinite;
+  }
+
+  .animate-blink {
+    animation: blink 1s step-end infinite;
+  }
+
   /* Animation utility classes */
   .animate-spin-slow {
     animation: spin-slow 30s linear infinite;
@@ -225,6 +259,22 @@
   .animate-fadeInRight {
     animation: fadeInRight 0.8s ease 0.3s both;
   }
+}
+
+/* WhyChoose section dot/grid backgrounds */
+.wc-dot-pattern {
+  background-image: radial-gradient(#d42b2b 1.2px, transparent 1.2px);
+  background-size: 44px 44px;
+}
+
+.wc-testimonial-dots {
+  background-image: radial-gradient(#ffffff 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.wc-stats-dots {
+  background-image: radial-gradient(#ffffff 1px, transparent 1px);
+  background-size: 32px 32px;
 }
 
 /* Custom scrollbar */

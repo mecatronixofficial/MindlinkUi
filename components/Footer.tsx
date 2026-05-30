@@ -224,27 +224,6 @@ export default function Footer({ onNavigate, onCourseDetail }: FooterProps) {
           </div>
         </div>
       </div>
-
-      {/* Back to Top Button */}
-      <button
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className="fixed bottom-6 right-6 z-40 w-12 h-12 bg-white text-[#d42b2b] rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 flex items-center justify-center group md:flex hidden"
-        aria-label="Back to top"
-      >
-        <svg
-          className="w-5 h-5 transform group-hover:-translate-y-1 transition-transform"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M5 10l7-7m0 0l7 7m-7-7v18"
-          />
-        </svg>
-      </button>
     </footer>
   );
 }

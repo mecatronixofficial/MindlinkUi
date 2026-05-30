@@ -53,7 +53,7 @@
       { 
         num: "04", 
         title: "Certify & Continue", 
-        desc: "Students receive industry-recognized certification and lifelong access to the EMPZON alumni support network and updated materials.",
+        desc: "Students receive industry-recognized certification and lifelong access to the MINDLINK alumni support network and updated materials.",
       icon: Icon_Helper.hero.cap,
         duration: "Week 13-14"
       },

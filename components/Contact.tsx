@@ -10,7 +10,7 @@ interface ContactProps {
 
 // Contact Section
 export default function Contact({ onNavigate }: ContactProps) {
-  const [formStatus, setFormStatus] = useState<"idle" | "sending" | "sent">("idle");
+  const [formStatus, setFormStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -25,21 +25,26 @@ export default function Contact({ onNavigate }: ContactProps) {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormStatus("sending");
-    setTimeout(() => {
-      setFormStatus("sent");
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        course: "",
-        message: ""
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
+
+      if (!res.ok) throw new Error("Failed to send");
+
+      setFormStatus("sent");
+      setFormData({ firstName: "", lastName: "", email: "", phone: "", course: "", message: "" });
       setTimeout(() => setFormStatus("idle"), 4000);
-    }, 1500);
+    } catch {
+      setFormStatus("error");
+      setTimeout(() => setFormStatus("idle"), 4000);
+    }
   };
 
   const contactInfo = [
@@ -274,7 +279,11 @@ export default function Contact({ onNavigate }: ContactProps) {
               <button
                 type="submit"
                 disabled={formStatus === "sending"}
-                className="w-full mt-6 bg-gradient-to-r from-red-600 to-red-700 text-white py-4 rounded-xl font-bold uppercase tracking-wider text-sm hover:from-red-700 hover:to-red-800 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed"
+                className={`w-full mt-6 text-white py-4 rounded-xl font-bold uppercase tracking-wider text-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed ${
+                  formStatus === "error"
+                    ? "bg-gray-700"
+                    : "bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800"
+                }`}
               >
                 {formStatus === "sending" ? (
                   <div className="flex items-center justify-center gap-2">
@@ -283,6 +292,8 @@ export default function Contact({ onNavigate }: ContactProps) {
                   </div>
                 ) : formStatus === "sent" ? (
                   "✓ Inquiry Sent!"
+                ) : formStatus === "error" ? (
+                  "✗ Failed — Try Again"
                 ) : (
                   "Send Inquiry →"
                 )}

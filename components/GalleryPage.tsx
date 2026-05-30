@@ -42,7 +42,7 @@ export default function GalleryPage() {
     },
     {
       image: ImgHelper.Gallery.Work,
-      caption: "EMPZON Main Campus",
+      caption: "MINDLINK Main Campus",
       span: true,
       icon: Icon_Helper.testimonial.office,
       category: "Campus",

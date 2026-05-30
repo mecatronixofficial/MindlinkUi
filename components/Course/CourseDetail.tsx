@@ -170,7 +170,7 @@ export default function CourseDetailPage({
                     : slug === "health"
                       ? "I lost 12kg and found a morning routine I never thought possible."
                       : slug === "safety"
-                        ? "Every woman needs this knowledge. EMPZON's approach is so accessible."
+                        ? "Every woman needs this knowledge. MINDLINK's approach is so accessible."
                         : slug === "business"
                           ? "After the Vision Challenge, I finally had clarity. My business grew 3x."
                           : slug === "feedback"
