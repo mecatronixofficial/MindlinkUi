@@ -138,6 +138,8 @@ function PageContent() {
   useEffect(() => {
     if (currentCourseDetail !== null) return;
 
+    let observer: IntersectionObserver | null = null;
+
     const timeout = setTimeout(() => {
       const reveals =
         document.querySelectorAll<HTMLElement>(
@@ -148,7 +150,7 @@ function PageContent() {
         el.classList.remove("visible")
       );
 
-      const observer = new IntersectionObserver(
+      observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
@@ -165,13 +167,14 @@ function PageContent() {
       );
 
       reveals.forEach((el) =>
-        observer.observe(el)
+        observer!.observe(el)
       );
-
-      return () => observer.disconnect();
     }, 100);
 
-    return () => clearTimeout(timeout);
+    return () => {
+      clearTimeout(timeout);
+      observer?.disconnect();
+    };
   }, [activePage, currentCourseDetail]);
 
   // ==============================
